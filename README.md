@@ -39,4 +39,6 @@ Crear subcarpetas para mejor organización
 
 Utilizar etiquetas html como "footer" o "header" (NO DIV INNECESARIO)
 
+Formatear siempre el cógio (extensión prettier)
+
 
