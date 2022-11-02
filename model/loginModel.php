@@ -13,10 +13,11 @@ class LoginModel
     }
     public function login($admin, $password)
     {
-        $this->_dbLogin->conectar();
+        $this->_dbLogin->connect();
+
         $queryLogin = $this->_dbLogin->conexion->prepare("SELECT * FROM administrador WHERE admin = :admin AND password = :password");
         $queryLogin->execute();
-        $this->_dbLogin->desconectar();
+        $this->_dbLogin->close();
         if ($queryLogin->rowCount() == 1) {
             return true;
         } else {

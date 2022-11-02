@@ -13,9 +13,8 @@
             <div class="contenedor-login">
                 <h3>LOGIN ADMIN</h3>
                 <form action="index.php?page=loginauth" method="POST">
-                    <input type="text" title="text" required="required" name="usuario" placeholder="usuario" />
-                    <input type="password" title="password" required="required" name="password"
-                        placeholder="password" />
+                    <input type="text" title="text" required="required" name="admin" placeholder="admin" />
+                    <input type="password" title="password" required="required" name="password" placeholder="password" />
                     <button type="submit" class="btn">Login</button>
                 </form>
             </div>
