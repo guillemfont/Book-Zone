@@ -1,25 +1,30 @@
 <?php
-session_start();
-require "model/loginModel.php";
-class LoginController{
-    public function index(){
-        if(isset($_SESSION["login"]))
-            header('location:' .urlsite);
-        else{
-            require "view/login.php";
+
+class LoginController
+{
+    public static function index()
+    {
+        if (isset($_SESSION["login"]))
+            header('location:');
+        else
+            require "views/loginView.php";
+    }
+
+    public static function login()
+    {
+        $login = new LoginModel();
+        print("Start");
+        $admin = $_POST["admin"];
+        var_dump($_POST);
+        $password = $_POST["password"];
+        print("Check1");
+        if ($login->login($admin, $password)) {
+            $_SESSION["login"] = true;
+            var_dump($_SESSION);
+        } else {
+            echo "no funciona";
+            var_dump($_SESSION);
         }
-        public function login(){
-            $usuario = $_POST["usuario"];
-            $password = $_POST["password"];
-            $login = new Login();
-            if($login->login($usuario, $password)){
-                $_SESSION["login"] = true;
-                header('location:' .urlsite);
-            }
-            else{
-                header('location:' .urlsite."?msg=No coinciden los datos");
-            }
-        }
+        print("End");
     }
 }
-    
