@@ -21,12 +21,11 @@ div.contenedor-login {
     border-style: outset;
     align-items: center;
     text-align: center;
-    
+
 }
 ::placeholder{
     color: white;
-    }
-
+}
 
 input {
     display: block;

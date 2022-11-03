@@ -1,28 +1,42 @@
-<?php
-session_start();
-require "model/loginModel.php";
-$page = "index";
-$base_url = "http://" . $_SERVER['SERVER_NAME'] . dirname($_SERVER["REQUEST_URI"] . '?') . '/';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Main Page</title>
+</head>
+<body>
+<?php 
+require_once "autoload.php";
 
-if (isset($_GET["page"])) {
-    $page = $_GET["page"];
+
+if (isset($_GET['controller'])){
+    $nameController = $_GET['controller']."Controller";
+
 }
-switch ($page) {
-    case 'login':
-        require "controller/loginController.php";
-        LoginController::index();
-        break;
-    case 'loginauth':
-        require "controller/loginController.php";
-        LoginController::login();
-        break;
-    case 'logout':
-        break;
-    case 'admin':
-        echo "logueado";
-        break;
-    default:
-        // TODO Requiere que se haga un controlador para la página principal
-        require "views/defaultView.php";
-        break;
+else{
+
+    $nameController = "AdminController";
 }
+if (class_exists($nameController)){
+    $controller = new $nameController();
+    if(isset($_GET['action'])){
+        $action = $_GET['action'];
+        $controller->$action();
+    }
+    else {
+        require_once "views/general/header.html";
+        require_once "views/general/menu.php";
+    }
+}else{
+
+    echo "No existe el controlador";
+}
+require_once "views/general/footer.html";
+?>
+</body>
+</html>
+
+
