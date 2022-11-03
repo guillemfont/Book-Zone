@@ -1,16 +1,17 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"
-    <link rel="stylesheet" href="./css/style.css">
-    <title>Main Page</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Onetti project</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<?php 
-require_once "autoload.php";
 
+<?php
+session_start();
+require_once "autoload.php";
 
 if (isset($_GET['controller'])){
     $nameController = $_GET['controller']."Controller";
@@ -27,7 +28,7 @@ if (class_exists($nameController)){
         $controller->$action();
     }
     else {
-        require_once "views/general/header.html";
+        require_once "views/general/titulo.html";
         require_once "views/general/menu.php";
     }
 }else{

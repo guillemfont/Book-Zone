@@ -17,5 +17,9 @@ class Database{
        // return $this->db;
     }
 
+    public function connect(){
+        return $this->db;
+    }
+
 }
 
