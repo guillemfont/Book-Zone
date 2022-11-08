@@ -29,9 +29,9 @@ class AdminController
         if($login) {
             $_SESSION['admin'] = $login;
             // Cuando se loguea correctamente, se redirige a la página de inicio y no continua la ejecución del php
-            print "<script>alert(\"Bienvenido.\");window.location='index.php?controller=Admin&action=menuAdmin';</script>";
+            header('Location: index.php?controller=Admin&action=menuAdmin');
         } else {
-            print "<script>alert(\"Acceso incorrecto.\");window.location='index.php?controller=Admin&action=loginAdmin';</script>";
+            header('Location: index.php?controller=Admin&action=loginAdmin');
         }
     }
 
@@ -42,7 +42,7 @@ class AdminController
 
     public function closeAdmin() {
         unset($_SESSION['admin']);
-        print "<script>alert(\"Sesion cerrada.\");window.location='index.php?controller=Admin&action=loginAdmin';</script>";
+        header('Location: index.php?controller=Admin&action=loginAdmin');
     }
 
 }
