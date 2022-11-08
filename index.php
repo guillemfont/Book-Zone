@@ -11,6 +11,7 @@
 
 <?php
 session_start();
+
 require_once "autoload.php";
 
 if (isset($_GET['controller'])){
@@ -28,7 +29,7 @@ if (class_exists($nameController)){
         $controller->$action();
     }
     else {
-        require_once "views/general/titulo.html";
+        require_once "views/general/title.html";
         require_once "views/general/menu.php";
     }
 }else{
