@@ -1,38 +1,39 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>Onetti project</title>
-    <link rel="stylesheet" href="css/style.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Zone</title>
+    <script src="https://kit.fontawesome.com/ebca16e450.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/styles/style.css">
 </head>
 <body>
+    
+
 
 <?php
 session_start();
 
 require_once "autoload.php";
 
-if (isset($_GET['controller'])){
-    $nameController = $_GET['controller']."Controller";
+if (isset($_GET['controller'])) {
+    $nameController = $_GET['controller'] . "Controller";
 
-}
-else{
+} else {
 
     $nameController = "AdminController";
 }
-if (class_exists($nameController)){
+if (class_exists($nameController)) {
     $controller = new $nameController();
-    if(isset($_GET['action'])){
+    if (isset($_GET['action'])) {
         $action = $_GET['action'];
         $controller->$action();
-    }
-    else {
+    } else {
         require_once "views/general/title.html";
         require_once "views/general/menu.php";
     }
-}else{
+} else {
 
     echo "No existe el controlador";
 }
