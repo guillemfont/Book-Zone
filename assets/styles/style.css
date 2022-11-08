@@ -7,7 +7,7 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: #e5e5f7;
   background-image: radial-gradient(#7b7df7 0.5px, transparent 0.5px),
     radial-gradient(#7b7df7 0.5px, #e5e5f7 0.5px);
@@ -15,71 +15,102 @@ body {
   background-position: 0 0, 10px 10px;
   display: flex;
   min-height: 100vh;
-  
 }
 
 .form {
-    background-color: #fff;
-    margin: auto;
-    width: 90%;
-    max-width: 400px;
-    padding: 4.5em 3em;
-    border-radius: 10px;
-    box-shadow: 0 5px 10px -5px rgb(0, 0, 0 / 30%) ;
+  background-color: #fff;
+  margin: auto;
+  width: 90%;
+  max-width: 400px;
+  padding: 4.5em 3em;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.6);
 }
 
 .formTitle {
-    font-size: 2rem;
-    margin-bottom: .5em;
+  font-size: 2rem;
+  margin-bottom: 0.5em;
+  font-family: "Roboto", sans-serif;
+}
 
+.formError {
+    background-color: red;
+    margin: 1em 0;
+    
 }
 
 .formParagraph {
-    font-weight: 300;
+  font-weight: 300;
 }
 
 .formLink {
-    font-weight: 400;
-    color: #000;
+  font-weight: 400;
+  color: #000;
 }
 
 .formContainer {
-    margin-top: 3em;
-    display: grid;
-    gap: 2.5em;
+  margin-top: 3em;
+  display: grid;
+  gap: 2.5em;
 }
 
 .formGroup {
-    position: relative;
-    --color: #5757577e;
-
+  position: relative;
+  --color: #3f3f3f7e;
 }
-
 
 .formInput {
-    width: 100%;
-    background: none;
-    color: #706c6c;
-    font-size: 1rem;
-    padding: .6em .3em;
-    border: none;
-    border-bottom: 10x solid var(--color);
-    font-family: 'Roboto', sans-serif;
+  width: 100%;
+  background: none;
+  color: #706c6c;
+  font-size: 1rem;
+  padding: 0.6em 0.3em;
+  border: none;
+  border-bottom: 1px solid var(--color);
+  font-family: "Roboto", sans-serif;
+  outline: none;
 }
 
-.formInput:focus + .formLabel {
-    transform: translateY(-12px) scale(.7);
-    transform-origin: left top;
-    color: #3866f2;
-    border: none;
+.formInput:focus + .formLabel,
+.formInput:not(:placeholder-shown) + .formLabel{
+  transform: translateY(-12px) scale(0.7);
+  transform-origin: left top;
+  color: #3866f2;
 }
 
 .formLabel {
-    color: var(--color);
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    left: 5px;
-    transform: translateY(10px);
-    transition: transform .5s, color .3s;
+  color: var(--color);
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 5px;
+  transform: translateY(10px);
+  transition: transform 0.5s, color 0.3s;
+}
+
+.formSumbit {
+  background-color: #3866f2;
+  color: #fff;
+  font-weight: 300;
+  font-size: 1rem;
+  padding: 0.8em;
+  border: none;
+  border-radius: 0.5em;
+  font-family: "Roboto", sans-serif;
+}
+
+.formLine {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #3866f2;
+  transform: scale(0);
+  transform: left bottom;
+  transition: transform 0.4s;
+}
+
+.formInput:focus + .formLine + .formInput:not(:placeholder-shown) + .formLIne {
+  transform: scale(1);
 }
