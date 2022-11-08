@@ -18,7 +18,7 @@ class AdminController
 
     public function loginAuth() {
         if(!isset($_POST['admin']) || !isset($_POST['password'])) {
-            print "<script>alert(\"Acceso incorrecto.\");window.location='index.php?controller=Admin&action=loginAdmin';</script>";
+            header('location=index.php?controller=Admin&action=loginAdmin?log=false');
         }
 
         $admin = new Admin();

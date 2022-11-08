@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Zone</title>
     <script src="https://kit.fontawesome.com/ebca16e450.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="assets/styles/style.css">
+    <link rel="stylesheet" href="assets/style/style.css">
+    <script src="assets/script/main.js"></script>
 </head>
 <body>
     
