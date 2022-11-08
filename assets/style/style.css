@@ -23,7 +23,6 @@ body {
   width: 90%;
   max-width: 400px;
   padding: 4.5em 3em;
-  /* padding: 1em 3em 4.5em 3em; */
   border-radius: 10px;
   box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.6);
 }
@@ -41,7 +40,6 @@ body {
     text-align: center;
     border-radius: 5px;
     color: #8d0000;
-    /* display: block; */
     display: none;
 }
 

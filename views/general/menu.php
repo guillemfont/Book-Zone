@@ -1,5 +1,5 @@
 <ul>
 
-    <li> <a href= "index.php?controller=Admin&action=loginAdmin" >Login Admin </a></li>
+    <li> <a href= "index.php?log=true&controller=Admin&action=loginAdmin" >Login Admin </a></li>
 
 </ul>
