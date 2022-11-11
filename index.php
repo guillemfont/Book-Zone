@@ -29,14 +29,14 @@ if (class_exists($nameController)){
         $controller->$action();
     }
     else {
-        require_once "views/general/title.html";
+        require_once "views/general/title.php";
         require_once "views/general/menu.php";
     }
 }else{
 
     echo "No existe el controlador";
 }
-require_once "views/general/footer.html";
+require_once "views/general/footer.php";
 ?>
 </body>
 </html>
