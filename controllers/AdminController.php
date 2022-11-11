@@ -18,7 +18,7 @@ class AdminController
 
     public function loginAuth() {
         if(!isset($_POST['admin']) || !isset($_POST['password'])) {
-            print "<script>alert(\"Acceso incorrecto.\");window.location='index.php?controller=Admin&action=loginAdmin';</script>";
+            header('location=index.php?log=true&controller=Admin&action=loginAdmin?');
         }
 
         $admin = new Admin();
@@ -31,7 +31,7 @@ class AdminController
             // Cuando se loguea correctamente, se redirige a la página de inicio y no continua la ejecución del php
             header('Location: index.php?controller=Admin&action=menuAdmin');
         } else {
-            header('Location: index.php?controller=Admin&action=loginAdmin');
+            header('Location: index.php?log=false&controller=Admin&action=loginAdmin');
         }
     }
 
