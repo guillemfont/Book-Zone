@@ -9,10 +9,10 @@ class Database{
         $username = "root";
         $password = "";
 
-        //creem una nova connexió instancinat l'objecte PDO
+
+        //crearemos una nueva conexión instanciando el objeto PDO
 		$this->db = new PDO("mysql:host=$servername;dbname=$dbname",$username, $password);
-		// establim el mode PDO error a exception per poder
-		// recuperar les excepccions
+        //establecemos el modo PDO error a exception para poder recuperar las excepeciones
 		$this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
        // return $this->db;
     }

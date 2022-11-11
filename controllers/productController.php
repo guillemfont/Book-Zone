@@ -5,6 +5,7 @@ class ProductController{
         $this->model = new Product();
     }
     public function Menu(){
+        require_once "views/products/index.php";
 
     }
 }
