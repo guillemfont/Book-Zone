@@ -7,13 +7,14 @@ class AdminController
     {
         if (!isset($_SESSION['admin'])) {
             var_dump($_SESSION['admin']);
-            print "<script>alert(\"Acceso incorrecto.\");window.location='index.php?controller=Admin&action=loginAdmin';</script>";
+            print "<script>alert(\"Ac
+            ceso incorrecto.\");window.location='index.php?controller=Admin&action=loginAdmin';</script>";
         }
     }
 
     public function loginAdmin()
     {
-        require_once 'views/administrator/loginviewAdmin.php';
+        require_once 'views/admin/loginviewAdmin.php';
     }
 
     public function loginAuth() {
@@ -37,7 +38,7 @@ class AdminController
 
     public function menuAdmin() {
         $this->checkAdmin();
-        require_once 'views/administrator/menuAdmin.php';
+        require_once 'views/admin/menuAdmin.php';
     }
 
     public function closeAdmin() {
