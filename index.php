@@ -40,5 +40,3 @@ require_once "views/general/footer.html";
 ?>
 </body>
 </html>
-
-
