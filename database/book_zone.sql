@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-11-2022 a las 09:23:16
--- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 7.3.31
+-- Tiempo de generación: 11-11-2022 a las 10:50:40
+-- Versión del servidor: 10.4.25-MariaDB
+-- Versión de PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -60,14 +60,22 @@ CREATE TABLE `categoria` (
 
 CREATE TABLE `clientes` (
   `id` int(2) NOT NULL,
-  `email` int(11) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `nombre` varchar(25) NOT NULL,
   `apellidos` varchar(25) NOT NULL,
-  `calle` int(50) NOT NULL,
+  `calle` varchar(50) NOT NULL,
   `numero` int(2) NOT NULL,
   `dni` varchar(9) NOT NULL,
   `password` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `clientes`
+--
+
+INSERT INTO `clientes` (`id`, `email`, `nombre`, `apellidos`, `calle`, `numero`, `dni`, `password`) VALUES
+(1, 'salvador.dali@bookzone.com', 'Salvador', 'Dalí', 'calle Salvador Dalí', 77, '74839029Q', 81),
+(3, 'prueba', 'prueba', 'prueba', 'prueba', 1, 'prueba', 81);
 
 -- --------------------------------------------------------
 
@@ -150,6 +158,22 @@ ALTER TABLE `productos`
   ADD KEY `id_categoria` (`id_categoria`);
 
 --
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `clientes`
+--
+ALTER TABLE `clientes`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `productos`
+--
+ALTER TABLE `productos`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT;
+
+--
 -- Restricciones para tablas volcadas
 --
 
@@ -157,9 +181,9 @@ ALTER TABLE `productos`
 -- Filtros para la tabla `linea_pedido`
 --
 ALTER TABLE `linea_pedido`
-  ADD CONSTRAINT `linea_pedido_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `linea_pedido_ibfk_2` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`id_pedido`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `linea_pedido_ibfk_3` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `linea_pedido_ibfk_3` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `linea_pedido_ibfk_4` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `productos`

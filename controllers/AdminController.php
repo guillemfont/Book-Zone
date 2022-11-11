@@ -6,20 +6,18 @@ class AdminController
     private function checkAdmin(): void
     {
         if (!isset($_SESSION['admin'])) {
-            var_dump($_SESSION['admin']);
-            print "<script>alert(\"Ac
-            ceso incorrecto.\");window.location='index.php?controller=Admin&action=loginAdmin';</script>";
+            header('Location: index.php?controller=Admin&action=loginAdmin');
         }
     }
 
     public function loginAdmin()
     {
-        require_once 'views/admin/loginviewAdmin.php';
+        require_once 'views/admin/loginAdmin.php';
     }
 
     public function loginAuth() {
         if(!isset($_POST['admin']) || !isset($_POST['password'])) {
-            header('location=index.php?log=true&controller=Admin&action=loginAdmin?');
+            header('Location: index.php?log=true&controller=Admin&action=loginAdmin?');
         }
 
         $admin = new Admin();
@@ -29,7 +27,6 @@ class AdminController
 
         if($login) {
             $_SESSION['admin'] = $login;
-            // Cuando se loguea correctamente, se redirige a la página de inicio y no continua la ejecución del php
             header('Location: index.php?controller=Admin&action=menuAdmin');
         } else {
             header('Location: index.php?log=false&controller=Admin&action=loginAdmin');

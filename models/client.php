@@ -38,7 +38,7 @@ class Client extends Database {
     }
 
     public function loginAuth() {
-        $sql = "SELECT * FROM clientes WHERE email = '{$this->getEmail()}' AND password = '{$this->getPassword()}'";
+        $sql = "SELECT * FROM clientes WHERE email = '{$this->getEmail()}' AND password = md5('{$this->getPassword()}')";
         $login = $this->connect()->query($sql);
         if($login && $login->rowCount() == 1) {
             return $login->fetch()['email'];
