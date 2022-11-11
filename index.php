@@ -20,7 +20,7 @@ if (isset($_GET['controller'])){
 }
 else{
 
-    $nameController = "AdminController";
+    $nameController = "adminController";
 }
 if (class_exists($nameController)){
     $controller = new $nameController();
