@@ -12,7 +12,7 @@ class product{
     private $id_categoria;
 
 public function __construct(){
-    $this->pdo = DataBase::connect();
+    $this->pdo = (new Database)->connect();
 
 }
 
@@ -128,11 +128,27 @@ public function __construct(){
         $this->id_categoria = $id_categoria;
     }
 
-    public function List(){
+    public function getProductList(){
         try{
             $query=$this->pdo->prepare("SELECT * FROM productos;");
             $query->execute();
             return $query->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $e){
+            die($e->getMessage());
+        }
+    }
+    public function addProduct(){
+        try{
+            $query=$this->pdo->prepare("INSERT INTO productos (nombre, descripcion, precio, foto, stock, id_categoria) VALUES (?,?,?,?,?,?);");
+            $query->execute(array($this->nombre, $this->descripcion, $this->precio, $this->foto, $this->stock, $this->id_categoria));
+        }catch(Exception $e){
+            die($e->getMessage());
+        }
+    }
+    public function editProduct(){
+        try{
+            $query=$this->pdo->prepare("UPDATE productos SET nombre=?, descripcion=?, precio=?, foto=?, stock=?, id_categoria=? WHERE id=?;");
+            $query->execute(array($this->nombre, $this->descripcion, $this->precio, $this->foto, $this->stock, $this->id_categoria, $this->id));
         }catch(Exception $e){
             die($e->getMessage());
         }

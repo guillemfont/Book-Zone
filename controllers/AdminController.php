@@ -35,7 +35,23 @@ class AdminController
 
     public function menuAdmin() {
         $this->checkAdmin();
-        require_once 'views/admin/menuAdmin.php';
+        require_once 'productController.php';
+        $productController = new ProductController();
+        $productController->viewTableProduct();
+    }
+
+    public function addProduct() {
+        $this->checkAdmin();
+        require_once 'productController.php';
+        $productController = new ProductController();
+        $productController->addTableProduct();
+    }
+
+    public function postFormProduct() {
+        $this->checkAdmin();
+        require_once 'productController.php';
+        $productController = new ProductController();
+        $productController->postFormProduct();
     }
 
     public function closeAdmin() {

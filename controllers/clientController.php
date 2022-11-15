@@ -15,8 +15,9 @@ class ClientController
         require_once 'views/client/loginClient.php';
     }
 
-    public function loginAuth() {
-        if(!isset($_POST['client']) || !isset($_POST['password'])) {
+    public function loginAuth()
+    {
+        if (!isset($_POST['client']) || !isset($_POST['password'])) {
             header('Location: index.php?log=true&controller=Client&action=loginClient');
         }
 
@@ -25,7 +26,7 @@ class ClientController
         $client->setPassword($_POST['password']);
         $login = $client->loginAuth();
 
-        if($login) {
+        if ($login) {
             $_SESSION['client'] = $login;
             header('Location: index.php?controller=Client&action=menuClient');
         } else {
@@ -33,22 +34,31 @@ class ClientController
         }
     }
 
-    public function menuClient() {
+    public function menuClient()
+    {
         $this->checkClient();
         require_once 'views/client/menuClient.php';
     }
 
+<<<<<<< HEAD
     public function closeClient() {
         unset($_SESSION['client']);
+=======
+    public function closeClient()
+    {
+        unset($_SESSION['clinet']);
+>>>>>>> e5757618983a311bac6251af30f1c17e3c2282a3
         header('Location: index.php?controller=Client&action=loginClient');
     }
 
-    public function registerClient(){
+    public function registerClient()
+    {
         require_once 'views/client/registerClient.php';
     }
 
-    public function singInClient(){
-        if(isset($_POST['userDNI'])){
+    public function singInClient()
+    {
+        if (isset($_POST['userDNI'])) {
             $email = $_POST['userMail'];
             $userName = $_POST['userName'];
             $lastName = $_POST['userLastName'];
@@ -59,11 +69,8 @@ class ClientController
 
             $client = new Client($email, $userName, $lastName, $userDiretion, $userNumber, $userDNI, $password);
             $singIn = $client->userSingIn();
-            
-        }
-        else {
+        } else {
             header('Location: index.php?log=true&controller=Client&action=loginClient');
         }
     }
-
 }
