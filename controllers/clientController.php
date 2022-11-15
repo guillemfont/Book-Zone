@@ -15,8 +15,9 @@ class ClientController
         require_once 'views/client/loginClient.php';
     }
 
-    public function loginAuth() {
-        if(!isset($_POST['client']) || !isset($_POST['password'])) {
+    public function loginAuth()
+    {
+        if (!isset($_POST['client']) || !isset($_POST['password'])) {
             header('Location: index.php?log=true&controller=Client&action=loginClient');
         }
 
@@ -25,7 +26,7 @@ class ClientController
         $client->setPassword($_POST['password']);
         $login = $client->loginAuth();
 
-        if($login) {
+        if ($login) {
             $_SESSION['client'] = $login;
             header('Location: index.php?controller=Client&action=menuClient');
         } else {
@@ -33,18 +34,38 @@ class ClientController
         }
     }
 
-    public function menuClient() {
+    public function menuClient()
+    {
         $this->checkClient();
         require_once 'views/client/menuClient.php';
     }
 
-    public function closeClient() {
+    public function closeClient()
+    {
         unset($_SESSION['clinet']);
         header('Location: index.php?controller=Client&action=loginClient');
     }
 
-    public function registerClient(){
-        header('Location: index.php?controller=Client&action=registerClient');
+    public function registerClient()
+    {
+        require_once 'views/client/registerClient.php';
     }
 
+    public function singInClient()
+    {
+        if (isset($_POST['userDNI'])) {
+            $email = $_POST['userMail'];
+            $userName = $_POST['userName'];
+            $lastName = $_POST['userLastName'];
+            $userDiretion = $_POST['userDiretion'];
+            $userNumber = $_POST['formNumber'];
+            $userDNI = $_POST['userDNI'];
+            $password = $_POST['userPass'];
+
+            $client = new Client($email, $userName, $lastName, $userDiretion, $userNumber, $userDNI, $password);
+            $singIn = $client->userSingIn();
+        } else {
+            header('Location: index.php?log=true&controller=Client&action=loginClient');
+        }
+    }
 }

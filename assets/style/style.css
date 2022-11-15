@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
-
+ 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
+ 
 body {
   font-family: "Roboto", sans-serif;
   background-color: #e5e5f7;
@@ -16,7 +16,7 @@ body {
   display: flex;
   min-height: 100vh;
 }
-
+ 
 .form {
   background-color: #fff;
   margin: auto;
@@ -26,43 +26,54 @@ body {
   border-radius: 10px;
   box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.6);
 }
-
+ 
+.formReg {
+  background-color: #fff;
+  margin: auto;
+  width: 90%;
+  max-width: 600px;
+  padding: 4.5em 3em;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+ 
 .formTitle {
   font-size: 2rem;
   margin-bottom: 0.5em;
   font-family: "Roboto", sans-serif;
 }
-
+ 
 .formError {
-    background-color: #f7baba;
-    margin: 1em 0;
-    padding: 2%;
-    text-align: center;
-    border-radius: 5px;
-    color: #8d0000;
-    display: none;
+  background-color: #f7baba;
+  margin: 1em 0;
+  padding: 2%;
+  text-align: center;
+  border-radius: 5px;
+  color: #8d0000;
+  display: none;
 }
-
+ 
 .formParagraph {
   font-weight: 300;
 }
-
+ 
 .formLink {
   font-weight: 400;
   color: #000;
 }
-
+ 
 .formContainer {
   margin-top: 3em;
   display: grid;
   gap: 2.5em;
 }
-
+ 
 .formGroup {
   position: relative;
   --color: #3f3f3f7e;
 }
-
+ 
 .formInput {
   width: 100%;
   background: none;
@@ -74,14 +85,14 @@ body {
   font-family: "Roboto", sans-serif;
   outline: none;
 }
-
+ 
 .formInput:focus + .formLabel,
-.formInput:not(:placeholder-shown) + .formLabel{
+.formInput:not(:placeholder-shown) + .formLabel {
   transform: translateY(-12px) scale(0.7);
   transform-origin: left top;
   color: #3866f2;
 }
-
+ 
 .formLabel {
   color: var(--color);
   cursor: pointer;
@@ -91,7 +102,7 @@ body {
   transform: translateY(10px);
   transition: transform 0.5s, color 0.3s;
 }
-
+ 
 .formSumbit {
   background-color: #3866f2;
   color: #fff;
@@ -102,7 +113,12 @@ body {
   border-radius: 0.5em;
   font-family: "Roboto", sans-serif;
 }
-
+ 
+.formReg .formSumbit {
+  width: 100%;
+  margin: 1em 0;
+}
+ 
 .formLine {
   position: absolute;
   bottom: 0;
@@ -114,31 +130,18 @@ body {
   transform: left bottom;
   transition: transform 0.4s;
 }
-
+ 
 .formInput:focus + .formLine + .formInput:not(:placeholder-shown) + .formLIne {
   transform: scale(1);
 }
-
-footer {
-	position:absolute;
-	bottom:0;
-	
-	width:100%;
-	height: 20px;
-	
-	text-align: center;
-	letter-spacing: .1px;
-	font-family: 'Cagliostro', sans-serif;
-	font-size: .8em;
-	background: #CCCCFF;
-	color: darkblue;
-	padding:3px 0px 0px 0px;
-	margin: 0px;
-	
-	background-image: url("../imatges/angel.png");
-	background-size: 4%;
-	background-position: center right;
-	background-repeat: no-repeat;
+ 
+.parent {
+  margin: 3em 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2.5em;
+  width: 100%;
 }
 /* Menu admin */
 
