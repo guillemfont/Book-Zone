@@ -44,7 +44,26 @@ class ClientController
     }
 
     public function registerClient(){
-        header('Location: index.php?controller=Client&action=registerClient')
+        require_once 'views/client/registerClient.php';
+    }
+
+    public function singInClient(){
+        if(isset($_POST['userDNI'])){
+            $email = $_POST['userMail'];
+            $userName = $_POST['userName'];
+            $lastName = $_POST['userLastName'];
+            $userDiretion = $_POST['userDiretion'];
+            $userNumber = $_POST['formNumber'];
+            $userDNI = $_POST['userDNI'];
+            $password = $_POST['userPass'];
+
+            $client = new Client($email, $userName, $lastName, $userDiretion, $userNumber, $userDNI, $password);
+            $singIn = $client->userSingIn();
+            
+        }
+        else {
+            header('Location: index.php?log=true&controller=Client&action=loginClient');
+        }
     }
 
 }

@@ -4,7 +4,7 @@ echo '
 <form action="index.php?controller=Client&action=loginAuth" method="POST" id="form" class="form">
     <p class="formError" id="formError">Acceso inválido. Inténtelo otra vez.</p>
     <h2 class="formTitle">Iniciar sessión</h2>
-    <p class="formParagraph">¿Aún no tienes cuenta? <a href="index.php?controller=Client&action=loginAuth" class="formLink">Entra aquí</a></p>
+    <p class="formParagraph">¿Aún no tienes cuenta? <a href="index.php?controller=Client&action=registerClient" class="formLink">Entra aquí</a></p>
     
     <div class="formContainer">
     <div class="formGroup">
