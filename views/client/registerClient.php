@@ -32,7 +32,7 @@ echo '<form action="index.php?controller=Client&action=singInClient" method="POS
         </div>
         <div class="formGroup">
  
-            <input type="password" name="userPass" id="userPass" class="formInput" placeholder=" " required>
+            <input type="password" name="userPass" id="userPass" class="formInput" placeholder=" " required oninput="return samePass()">
             <label for="userPass" class="formLabel">Contraseña:</label>
             <span class="formLine"></span>
         </div>

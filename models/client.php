@@ -1,7 +1,6 @@
 <?php
 require_once("database.php");
-class Client extends Database
-{
+class Client extends Database {
     private $email;
     private $userName;
     private $userLastName;
@@ -12,7 +11,7 @@ class Client extends Database
 
 
     //Constructor
-    public function ___constructor($email, $name, $lastname, $direction, $number, $DNI, $password)
+    public function __construct($email = null, $name = null, $lastname = null, $direction = null, $number = null, $DNI = null, $password = null)
     {
         $this->email = $email;
         $this->userName = $name;
@@ -96,7 +95,8 @@ class Client extends Database
     public function loginAuth()
     {
         $sql = "SELECT * FROM clientes WHERE email = '{$this->getEmail()}' AND password = md5('{$this->getPassword()}')";
-        $login = $this->connect()->query($sql);
+        $conn = new Database();
+        $login = $conn->connect()->query($sql);
         if ($login && $login->rowCount() == 1) {
             return $login->fetch()['email'];
         }
@@ -106,11 +106,13 @@ class Client extends Database
     public function userSingIn()
     {
         $sql = "INSERT INTO clientes (email, nombre, apellidos, calle, numero, dni, password) VALUES ('{$this->getEmail()}','{$this->getUserName()}','{$this->getUserLastName()}','{$this->getUserDirection()}','{$this->getUserNumber()}','{$this->getUserDNI()}',md5('{$this->getPassword()}'))";
-        $signIn = $this->connect()->query($sql);
-        if($signIn){
-            echo 'insertado';
+        $conn = new Database();
+        $db = $conn->connect();
+        if($db->query($sql)){
+            echo 'si';
         } else {
-            echo 'error, no se ha insertado';
+            echo 'no';
         }
+        
     }
 }

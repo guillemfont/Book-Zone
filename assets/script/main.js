@@ -12,7 +12,7 @@ function samePass() {
   const par = document.getElementById("formError");
   const cont = document.getElementById("form");
 
-  if (pass1 !== pass2) {
+  if (pass1 != "" && pass2 != "" && pass1 !== pass2) {
     par.style.display = "block";
     cont.style.padding = "1em 3em 4.5em 3em";
   } else {

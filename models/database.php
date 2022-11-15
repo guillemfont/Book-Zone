@@ -1,7 +1,7 @@
 <?php
 
 class Database{
-    protected $db;
+    public $db;
     
     public function __construct(){
         $servername = "localhost";
@@ -20,6 +20,7 @@ class Database{
     public function connect(){
         return $this->db;
     }
+    
 
 }
 

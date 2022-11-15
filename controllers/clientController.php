@@ -1,7 +1,7 @@
 <?php
 require_once "models/client.php";
 
-class ClientController
+class ClientController 
 {
     private function checkClient(): void
     {
@@ -39,7 +39,7 @@ class ClientController
     }
 
     public function closeClient() {
-        unset($_SESSION['clinet']);
+        unset($_SESSION['client']);
         header('Location: index.php?controller=Client&action=loginClient');
     }
 
