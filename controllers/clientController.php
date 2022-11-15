@@ -40,14 +40,8 @@ class ClientController
         require_once 'views/client/menuClient.php';
     }
 
-<<<<<<< HEAD
     public function closeClient() {
         unset($_SESSION['client']);
-=======
-    public function closeClient()
-    {
-        unset($_SESSION['clinet']);
->>>>>>> e5757618983a311bac6251af30f1c17e3c2282a3
         header('Location: index.php?controller=Client&action=loginClient');
     }
 
