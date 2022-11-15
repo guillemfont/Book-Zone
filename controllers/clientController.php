@@ -44,7 +44,7 @@ class ClientController
     }
 
     public function registerClient(){
-        header('Location: index.php?controller=Client&action=registerClient')
+        header('Location: index.php?controller=Client&action=registerClient');
     }
 
 }
