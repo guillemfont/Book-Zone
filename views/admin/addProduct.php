@@ -1,7 +1,7 @@
 <div class="center-contenedor-product">
     <div class="contenedor-product">
         <h2 class="login-header">Añadir Producto</h2>
-        <form action="index.php?controller=Admin&action=postFormProduct" class="login" method="POST">
+        <form action="index.php?controller=Admin&action=postAddProduct" class="login" method="POST">
             <p>ID: <input type="text" required="required" name="id" /></p>
             <p>Nombre: <input type="text" required="" name="nombre" /></p>
             <p>Descripción: <input type="name" required="required" name="descripcion" /> </p>

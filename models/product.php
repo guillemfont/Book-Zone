@@ -154,4 +154,14 @@ public function __construct(){
         }
     }
 
+    public function getProductById($id) {
+        try {
+            $query = $this->pdo->prepare("SELECT * FROM productos WHERE id=?;");
+            $query->execute(array($id));
+            return $query->fetch(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
 }

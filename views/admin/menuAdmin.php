@@ -28,7 +28,12 @@
         <td><?php echo($product->foto); ?></td>
         <td><?php echo($product->stock); ?></td>
         <td><?php echo($product->id_categoria); ?></td>
-        <td><a href=""></a><img src="assets/img_icons/editar.svg" alt="Editar"></td>
+        <td>
+            <a title="Edit" href="index.php?controller=Admin&action=editProduct&id=<?php echo($product->id); ?>">
+                <img src="assets/img_icons/editar.svg" alt="Editar">
+            </a>
+        </td>
+
     </tr>
 <?php endforeach; ?>
         </tbody>

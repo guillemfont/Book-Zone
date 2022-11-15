@@ -47,11 +47,25 @@ class AdminController
         $productController->addTableProduct();
     }
 
-    public function postFormProduct() {
+    public function postAddProduct() {
         $this->checkAdmin();
         require_once 'productController.php';
         $productController = new ProductController();
-        $productController->postFormProduct();
+        $productController->postFormAddProduct();
+    }
+
+    public function editProduct() {
+        $this->checkAdmin();
+        require_once 'productController.php';
+        $productController = new ProductController();
+        $productController->editTableProduct();
+    }
+
+    public function postEditProduct() {
+        $this->checkAdmin();
+        require_once 'productController.php';
+        $productController = new ProductController();
+        $productController->postFormEditProduct();
     }
 
     public function closeAdmin() {
