@@ -7,13 +7,15 @@
     <title>Book Zone</title>
     <link rel="stylesheet" href="assets/style/style.css">
     <script src="assets/script/main.js"></script>
+    <script src="https://kit.fontawesome.com/ebca16e450.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body onload="responsiveMenu()">
 
 <?php
 session_start();
 
 require_once "autoload.php";
+require_once "views/general/header.php";
 
 if (isset($_GET['controller'])){
     $nameController = $_GET['controller']."Controller";
@@ -34,7 +36,7 @@ if (class_exists($nameController)){
         require_once "views/general/menu.php";
     }
 }else{
-
+    
     echo "No existe el controlador";
 }
 require_once "views/general/footer.php";

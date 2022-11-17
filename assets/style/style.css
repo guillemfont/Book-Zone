@@ -15,6 +15,13 @@ body {
   background-position: 0 0, 10px 10px;
   display: flex;
   min-height: 100vh;
+  flex-direction: column;
+}
+
+.menu {
+  background-color: #1A202C;
+  color: #fff;
+  height: 80px;
 }
  
 .form {
@@ -63,6 +70,17 @@ body {
   color: #000;
 }
  
+.menuContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  max-width: 1600px;
+  height: 100%;
+  margin: 0 auto;
+
+}
+
 .formContainer {
   margin-top: 3em;
   display: grid;
@@ -73,7 +91,97 @@ body {
   position: relative;
   --color: #3f3f3f7e;
 }
- 
+
+.menuLinks {
+  height: 100%;
+  transition: transform .5s;
+  display: flex;
+}
+
+.menuItem {
+  list-style: none;
+  position: relative;
+  height: 100%;
+  --clip: polygon(0 0, 100% 0, 100% 0, 0 0);
+  --transform: rotate(90deg);
+}
+
+.menuItemActive {
+  --transform: rotate(0);
+  --background: #5e7094;
+}
+
+.menuItemShow {
+  background-color: var(--background);
+}
+
+.menuItem:hover {
+  --clip: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  --transform: rotate(180deg);
+
+}
+
+.menuLink {
+  color: #fff;
+  text-decoration: none;
+  padding: 0 30px;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  width: 15vh;
+  justify-content: center;
+}
+
+.menuLink:hover {
+  background-color: #5e7094;
+}
+
+#menuArrow {
+  margin-left: 10px;
+  transform: var(--transform);
+  transition: transform .2s;
+  display: block;
+}
+
+.menuNesting {
+  list-style: none;
+  transition: clip-path .3s;
+  clip-path: var(--clip);
+  background-color: #000;
+}
+
+.menuInside {
+  padding: 1rem 0.5rem;
+
+}
+
+.menuInside:hover {
+  background-color: #5e7094;
+}
+
+.menuLinkInside {
+  color: #fff;
+  text-decoration: none;
+  padding: 0 30px;
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.menuDisplay {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 15;
+  cursor: pointer;
+  display: none;
+}
+
+#menuBars {
+  display: block;
+  width: 36px;
+}
+
 .formInput {
   width: 100%;
   background: none;
@@ -206,7 +314,8 @@ body {
 }
 
 
-div.contenedor-product {
+/* HE COMENTADO TODO ESTO PORQUE NO ES BUENO USAR SELECTORES DIRECTAMENTE DEL HTML, USA CLASES EN VEZ DE "FOOTER" */
+/* div.contenedor-product {
   margin: 0 25px;
   width: 25%;
   border-radius: 20px;
@@ -217,7 +326,7 @@ div.contenedor-product {
 }
 
 /* Footer */
-footer {
+/* footer {
   position:absolute;
   bottom:0;
 
@@ -237,4 +346,54 @@ footer {
   background-size: 4%;
   background-position: center right;
   background-repeat: no-repeat;
+} */ 
+
+
+
+/* RESPONSIVE */
+@media (max-width:800px){
+  .menuDisplay{
+    display: flex;
+  }
+  .menuItem {
+    --clip: 0;
+    overflow: hidden;
+    justify-content: flex-start;
+  }
+  .menuLinks{
+    position: fixed;
+    max-width: 400px;
+    width: 100%;
+    top: 80px;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    overflow-y: auto;
+    display: grid;
+    grid-auto-rows: max-content;
+    opacity: 0.8;
+  }
+  .menuLink {
+    padding: 25px 0;
+    padding-left: 30px;
+    height: auto;
+    justify-content: left;
+    width: 100%;
+  }
+  .menuLink:hover {
+    background-color: #000;
+  }
+  .menuNesting {
+    display: grid;
+    position: unset;
+    width: 100%;
+    transform: translateY(0);
+    height: 0;
+    transition: height .3s;
+  }
+  .menuLinkInside {
+    width: 90%;
+    margin-left: auto;
+    border-left: 1px solid #1A202C;
+  }
 }

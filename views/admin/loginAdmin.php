@@ -3,8 +3,8 @@
 echo '
 <form action="index.php?controller=Admin&action=loginAuth" method="POST" id="form" class="form">
     <p class="formError" id="formError">Acceso inválido. Inténtelo otra vez.</p>
-    <h2 class="formTitle">Iniciar sessión</h2>
-    <p class="formParagraph">¿Aún no tienes cuenta? <a href="#" class="formLink">Entra aquí</a></p>
+    <h2 class="formTitle">Inicio administrador</h2>
+    <p class="formParagraph">¿No eres administrador? <a href="index.php" class="formLink">Entra aquí</a></p>
     
     <div class="formContainer">
     <div class="formGroup">
