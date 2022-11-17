@@ -41,6 +41,11 @@ function responsiveMenu(){
     })
   }
 
+  menu.addEventListener('click', () => {
+    list.classList.toggle('menuLinksShow');
+    console.log('debería hacer algo');
+  })
+
   addClick();
 
   window.addEventListener('resize', () =>{

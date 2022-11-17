@@ -75,7 +75,7 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 95%;
-  max-width: 1600px;
+  max-width: 2000px;
   height: 100%;
   margin: 0 auto;
 
@@ -97,6 +97,7 @@ body {
   transition: transform .5s;
   display: flex;
 }
+
 
 .menuItem {
   list-style: none;
@@ -371,7 +372,12 @@ body {
     overflow-y: auto;
     display: grid;
     grid-auto-rows: max-content;
-    opacity: 0.8;
+    opacity: 0.9;
+    transform: translate(100%);
+  }
+  .menuLinksShow {
+    transform: unset;
+    width: 100%;
   }
   .menuLink {
     padding: 25px 0;
@@ -394,6 +400,6 @@ body {
   .menuLinkInside {
     width: 90%;
     margin-left: auto;
-    border-left: 1px solid #1A202C;
+    border-left: 2px solid #1A202C;
   }
 }
