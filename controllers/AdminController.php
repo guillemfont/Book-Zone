@@ -73,4 +73,27 @@ class AdminController
         header('Location: index.php?controller=Admin&action=loginAdmin');
     }
 
+    public function viewTableCategory()
+    {
+        $this->checkAdmin();
+        require_once "models/category.php";
+        $productController = new categoryController();
+        $productController->viewTableCategory();
+    }
+
+    public function addCategory() {
+        $this->checkAdmin();
+        require_once 'productController.php';
+        $categoryController = new categoryController();
+        $categoryController->addTableCategory();
+    }
+
+    public function postAddCategory() {
+        $this->checkAdmin();
+        require_once 'productController.php';
+        $categoryController = new categoryController();
+        $categoryController->postFormAddCategory();
+    }
+
+
 }
