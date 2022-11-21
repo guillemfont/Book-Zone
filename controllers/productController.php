@@ -35,11 +35,15 @@ class ProductController
         $product->setNombre($_POST['nombre']);
         $product->setDescripcion($_POST['descripcion']);
         $product->setPrecio($_POST['precio']);
-        $product->setFoto($_POST['foto']);
+        if (!$product->setFoto($_FILES['foto']['name'], $_POST['id'])) {
+            echo "<script>alert('Error al subir la imagen');</script>";
+            header('Location: index.php?controller=Admin&action=addProduct');
+        }
         $product->setStock($_POST['stock']);
         $product->setIdCategoria($_POST['id_categoria']);
         $product->addProduct();
         header('Location: index.php?controller=Admin&action=menuAdmin');
+
     }
 
     public function editTableProduct()
@@ -68,7 +72,10 @@ class ProductController
         $product->setNombre($_POST['nombre']);
         $product->setDescripcion($_POST['descripcion']);
         $product->setPrecio($_POST['precio']);
-        $product->setFoto($_POST['foto']);
+        if (!$product->setFoto($_FILES['foto']['name'], $_POST['id'])) {
+            echo "<script>alert('Error al subir la imagen');</script>";
+            header('Location: index.php?controller=Admin&action=editProduct');
+        }
         $product->setStock($_POST['stock']);
         $product->setIdCategoria($_POST['id_categoria']);
         $product->setId($_POST['id']);
@@ -76,12 +83,9 @@ class ProductController
         header('Location: index.php?controller=Admin&action=menuAdmin');
     }
 
-    /**
-     * @return bool
-     */
     public function isCondition(): bool
     {
-        return (!isset($_POST['id']) || !isset($_POST['nombre']) || !isset($_POST['descripcion']) || !isset($_POST['precio']) || !isset($_POST['foto']) || !isset($_POST['stock']) || !isset($_POST['id_categoria']));
+        return (!isset($_POST['id']) || !isset($_POST['nombre']) || !isset($_POST['descripcion']) || !isset($_POST['precio']) || !isset($_POST['foto']) || $_FILES['foto']['name'] != "" || !isset($_POST['stock']) || !isset($_POST['id_categoria']));
     }
 
 

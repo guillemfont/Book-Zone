@@ -26,7 +26,7 @@
                 <td><?php echo ($product->nombre); ?></td>
                 <td><?php echo ($product->descripcion); ?></td>
                 <td><?php echo ($product->precio); ?></td>
-                <td><?php echo ($product->foto); ?></td>
+                <td><img class="fotoProduct" src="<?php echo ($product->foto); ?>" alt="<?php echo ($product->foto); ?>"></td>
                 <td><?php echo ($product->stock); ?></td>
                 <td><?php echo ($product->id_categoria); ?></td>
                 <td>
