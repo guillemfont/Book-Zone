@@ -88,5 +88,20 @@ class ProductController
         return (!isset($_POST['id']) || !isset($_POST['nombre']) || !isset($_POST['descripcion']) || !isset($_POST['precio']) || !isset($_POST['foto']) || $_FILES['foto']['name'] != "" || !isset($_POST['stock']) || !isset($_POST['id_categoria']));
     }
 
+    public function postConditionProduct()
+    {
+        require_once "models/product.php";
+        $product = new Product();
+        $productid = $product->getProductById($_GET['id']);
+        if ($productid->estado == '0') {
+            $product->editConditionProduct($productid->id, 1);
+        } else {
+            $product->editConditionProduct($productid->id, 0);
+        }
+
+        header('Location: index.php?controller=Admin&action=menuAdmin');
+    }
 
 }
+
+

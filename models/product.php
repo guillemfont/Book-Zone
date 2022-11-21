@@ -1,6 +1,7 @@
 <?php
 
-class product{
+class product
+{
     private $pdo;
 
     private $id;
@@ -10,11 +11,14 @@ class product{
     private $foto;
     private $stock;
     private $id_categoria;
+    private $estado = 0;
 
-public function __construct(){
-    $this->pdo = (new Database)->connect();
 
-}
+    public function __construct()
+    {
+        $this->pdo = (new Database)->connect();
+
+    }
 
     /**
      * @return mixed
@@ -137,33 +141,39 @@ public function __construct(){
         $this->id_categoria = $id_categoria;
     }
 
-    public function getProductList(){
-        try{
-            $query=$this->pdo->prepare("SELECT * FROM productos;");
+    public function getProductList()
+    {
+        try {
+            $query = $this->pdo->prepare("SELECT * FROM productos;");
             $query->execute();
             return $query->fetchAll(PDO::FETCH_OBJ);
-        }catch(Exception $e){
-            die($e->getMessage());
-        }
-    }
-    public function addProduct(){
-        try{
-            $query=$this->pdo->prepare("INSERT INTO productos (nombre, descripcion, precio, foto, stock, id_categoria) VALUES (?,?,?,?,?,?);");
-            $query->execute(array($this->nombre, $this->descripcion, $this->precio, $this->foto, $this->stock, $this->id_categoria));
-        }catch(Exception $e){
-            die($e->getMessage());
-        }
-    }
-    public function editProduct(){
-        try{
-            $query=$this->pdo->prepare("UPDATE productos SET nombre=?, descripcion=?, precio=?, foto=?, stock=?, id_categoria=? WHERE id=?;");
-            $query->execute(array($this->nombre, $this->descripcion, $this->precio, $this->foto, $this->stock, $this->id_categoria, $this->id));
-        }catch(Exception $e){
+        } catch (Exception $e) {
             die($e->getMessage());
         }
     }
 
-    public function getProductById($id) {
+    public function addProduct()
+    {
+        try {
+            $query = $this->pdo->prepare("INSERT INTO productos (nombre, descripcion, precio, foto, stock, id_categoria, estado) VALUES (?,?,?,?,?,?,?);");
+            $query->execute(array($this->nombre, $this->descripcion, $this->precio, $this->foto, $this->stock, $this->id_categoria, $this->estado));
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function editProduct()
+    {
+        try {
+            $query = $this->pdo->prepare("UPDATE productos SET nombre=?, descripcion=?, precio=?, foto=?, stock=?, id_categoria=? WHERE id=?;");
+            $query->execute(array($this->nombre, $this->descripcion, $this->precio, $this->foto, $this->stock, $this->id_categoria, $this->id));
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function getProductById($id)
+    {
         try {
             $query = $this->pdo->prepare("SELECT * FROM productos WHERE id=?;");
             $query->execute(array($id));
@@ -173,4 +183,15 @@ public function __construct(){
         }
     }
 
+    public function editConditionProduct($id, $estado)
+    {
+        try {
+            $query = $this->pdo->prepare("UPDATE productos SET estado=? WHERE id=?;");
+            $query->execute(array($estado, $id));
+            $this->estado = $estado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
 }
+

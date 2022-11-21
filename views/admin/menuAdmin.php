@@ -35,6 +35,16 @@
                         <img src="assets/img_icons/editar.svg" alt="Editar">
                     </a>
                 </td>
+                <td>
+                    <?php
+                    $urlEstado = "index.php?controller=Admin&action=conditionProduct&id=" . $product->id;
+                    if ($product->estado == 1) {
+                        echo "<a title='Desactivar' href='$urlEstado'><img src='assets/img_icons/tick.svg' alt='Activar'></a>";
+                    } else {
+                        echo "<a title='Activar' href='$urlEstado'><img src='assets/img_icons/x.svg' alt='Desactivar'></a>";
+                    }
+                    ?>
+                </td>
 
             </tr>
             <?php endforeach; ?>
