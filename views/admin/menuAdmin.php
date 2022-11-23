@@ -20,34 +20,37 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($productList as $product) : ?>
-            <tr>
-                <td><?php echo ($product->id); ?></td>
-                <td><?php echo ($product->nombre); ?></td>
-                <td><?php echo ($product->descripcion); ?></td>
-                <td><?php echo ($product->precio); ?></td>
-                <td><img class="fotoProduct" src="<?php echo ($product->foto); ?>" alt="<?php echo ($product->foto); ?>"></td>
-                <td><?php echo ($product->stock); ?></td>
-                <td><?php echo ($product->id_categoria); ?></td>
-                <td>
-                    <a title="Edit"
-                        href="index.php?controller=Admin&action=editProduct&id=<?php echo ($product->id); ?>">
-                        <img src="assets/img/img_icons/editar.svg" alt="Editar">
-                    </a>
-                </td>
-                <td>
-                    <?php
-                    $urlEstado = "index.php?controller=Admin&action=conditionProduct&id=" . $product->id;
-                    if ($product->estado == 1) {
-                        echo "<a title='Desactivar' href='$urlEstado'><img src='assets/img/img_icons/tick.svg' alt='Activar'></a>";
-                    } else {
-                        echo "<a title='Activar' href='$urlEstado'><img src='assets/img/img_icons/x.svg' alt='Desactivar'></a>";
-                    }
-                    ?>
-                </td>
+            <?php if (isset($productList)) {
+                foreach ($productList as $product) : ?>
+                <tr>
+                    <td><?php echo ($product->id); ?></td>
+                    <td><?php echo ($product->nombre); ?></td>
+                    <td><?php echo ($product->descripcion); ?></td>
+                    <td><?php echo ($product->precio); ?></td>
+                    <td><img class="fotoProduct" src="<?php echo ($product->foto); ?>" alt="<?php echo ($product->foto); ?>"></td>
+                    <td><?php echo ($product->stock); ?></td>
+                    <td><?php echo ($product->id_categoria); ?></td>
+                    <td>
+                        <a title="Edit"
+                            href="index.php?controller=Admin&action=editProduct&id=<?php echo ($product->id); ?>">
+                            <img src="assets/img/img_icons/editar.svg" alt="Editar">
+                        </a>
+                    </td>
+                    <td>
+                        <?php
+                        $urlEstado = "index.php?controller=Admin&action=conditionProduct&id=" . $product->id;
+                        if ($product->estado == 1) {
+                            echo "<a title='Desactivar' href='$urlEstado'><img src='assets/img/img_icons/tick.svg' alt='Activar'></a>";
+                        } else {
+                            echo "<a title='Activar' href='$urlEstado'><img src='assets/img/img_icons/x.svg' alt='Desactivar'></a>";
+                        }
+                        ?>
+                        
+                    </td>
 
-            </tr>
-            <?php endforeach; ?>
+                </tr>
+                <?php endforeach;
+            } ?>
         </tbody>
     </table>
 </section>
