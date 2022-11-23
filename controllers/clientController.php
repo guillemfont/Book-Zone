@@ -67,4 +67,18 @@ class ClientController
             header('Location: index.php?log=true&controller=Client&action=loginClient');
         }
     }
+
+
+    public function showMain(){
+        require_once "models/product.php";
+        require_once 'productController.php';
+        $productController = new ProductController();
+        $productList = (new Product())->getProductList();
+        require_once "views/general/menu.php";
+     }
+
+
+    public function viewTableProduct()
+    {
+    }
 }

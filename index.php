@@ -23,18 +23,17 @@ if (isset($_GET['controller'])){
 }
 else{
 
-    $nameController = "adminController";
+    $nameController = "clientController";
 }
 if (class_exists($nameController)){
-    $controller = new $nameController();
+    $controler = new $nameController(); 
     if(isset($_GET['action'])){
         $action = $_GET['action'];
-        $controller->$action();
     }
-    else {
-        require_once "views/general/title.php";
-        require_once "views/general/menu.php";
+    else{
+        $action ="showMain";
     }
+    $controler->$action();  
 }else{
     
     echo "No existe el controlador";

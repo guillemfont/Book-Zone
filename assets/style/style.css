@@ -18,6 +18,14 @@ body {
   flex-direction: column;
 }
 
+.mainMenu {
+  margin: auto;
+  width: 90%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: red;
+}
+
 .menu {
   background-color: #1A202C;
   color: #fff;
@@ -68,6 +76,34 @@ body {
 .formLink {
   font-weight: 400;
   color: #000;
+}
+
+.product-component__container {
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 30vh;
+  max-height: 30vh;
+}
+
+.product-component__content {
+  height: 100%;
+  background-color: red;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.product-component__img-container {
+  width: 80%;
+  height: 50%;
+}
+
+.product-component__img {
+  max-width: 60%;
 }
  
 .menuContainer {
