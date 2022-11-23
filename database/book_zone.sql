@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-11-2022 a las 10:50:40
--- Versión del servidor: 10.4.25-MariaDB
--- Versión de PHP: 8.1.10
+-- Tiempo de generación: 21-11-2022 a las 22:58:21
+-- Versión del servidor: 10.4.22-MariaDB
+-- Versión de PHP: 7.3.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -52,6 +52,16 @@ CREATE TABLE `categoria` (
   `nombre` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `categoria`
+--
+
+INSERT INTO `categoria` (`id_categoria`, `nombre`) VALUES
+(1, 'Novela terror'),
+(2, 'asd'),
+(3, 'Rominc'),
+(4, 'asaa');
+
 -- --------------------------------------------------------
 
 --
@@ -75,7 +85,8 @@ CREATE TABLE `clientes` (
 
 INSERT INTO `clientes` (`id`, `email`, `nombre`, `apellidos`, `calle`, `numero`, `dni`, `password`) VALUES
 (1, 'salvador.dali@bookzone.com', 'Salvador', 'Dalí', 'calle Salvador Dalí', 77, '74839029Q', 81),
-(3, 'prueba', 'prueba', 'prueba', 'prueba', 1, 'prueba', 81);
+(3, 'prueba', 'prueba', 'prueba', 'prueba', 1, 'prueba', 81),
+(4, 'paraiso@gmail.com', 'Alo', 'Estic', 'calle del paraiso', 3, '145671234', 0);
 
 -- --------------------------------------------------------
 
@@ -116,8 +127,18 @@ CREATE TABLE `productos` (
   `precio` int(3) NOT NULL,
   `foto` varchar(100) NOT NULL,
   `stock` int(10) NOT NULL,
-  `id_categoria` int(2) NOT NULL
+  `id_categoria` int(2) NOT NULL,
+  `estado` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `foto`, `stock`, `id_categoria`, `estado`) VALUES
+(10, 'Mono NFT', 'Dinerito', 564, 'assets/img_products/1.jpg', 2, 1, 0),
+(11, 'Monito Sabroson', 'okey ', 231, 'assets/img_products/2.jpg', 3, 2, 0),
+(13, 'asd', 'asd', 2, 'assets/img_products/3.png', 2, 2, 1);
 
 --
 -- Índices para tablas volcadas
@@ -165,13 +186,13 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Restricciones para tablas volcadas

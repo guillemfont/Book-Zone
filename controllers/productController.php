@@ -102,6 +102,14 @@ class ProductController
         header('Location: index.php?controller=Admin&action=menuAdmin');
     }
 
+    public function postsearchProduct(){
+        require_once "models/product.php";
+        $product = new Product();
+        $product->setNombre($_POST['nombre']);
+        $productList = $product->searchProduct();
+        require_once "views/admin/menuAdmin.php";
+    }
+
 }
 
 

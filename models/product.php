@@ -193,5 +193,14 @@ class product
             die($e->getMessage());
         }
     }
+   public function searchProduct($nombre){
+        try {
+            $query = $this->pdo->prepare("SELECT * FROM productos WHERE nombre LIKE ?;");
+            $query->execute(array("%".$nombre."%"));
+            return $query->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
 }
 
