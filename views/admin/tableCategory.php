@@ -20,7 +20,7 @@
                 <td>
                     <a title="Edit"
                        href="index.php?controller=Admin&action=editCategory&id_category=<?php echo ($categoria->id_categoria); ?>">
-                        <img src="assets/img_icons/editar.svg" alt="Editar">
+                        <img src="assets/img/img_icons/editar.svg" alt="Editar">
                     </a>
                 </td>
 
