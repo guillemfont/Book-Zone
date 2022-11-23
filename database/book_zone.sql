@@ -136,8 +136,8 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `foto`, `stock`, `id_categoria`, `estado`) VALUES
-(10, 'Mono NFT', 'Dinerito', 564, 'assets/img_products/1.jpg', 2, 1, 0),
-(11, 'Monito Sabroson', 'okey ', 231, 'assets/img_products/2.jpg', 3, 2, 0),
+(10, 'Mono NFT', 'Dinerito', 564, 'assets/img/img_products/1.jpg', 2, 1, 0),
+(11, 'Monito Sabroson', 'okey ', 231, 'assets/img/img_products/2.jpg', 3, 2, 0),
 (13, 'asd', 'asd', 2, 'assets/img_products/3.png', 2, 2, 1);
 
 --

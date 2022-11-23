@@ -98,7 +98,7 @@ class product
     public function setFoto($foto, $filenameId)
     {
         $flagOK = true;
-        $target_dir = "assets/img_products";
+        $target_dir = "assets/img/img_products";
         $ext = pathinfo($foto, PATHINFO_EXTENSION);
         $target_file = $target_dir . "/" . $filenameId . "." . $ext;
         if (!move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)) {

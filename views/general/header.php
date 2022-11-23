@@ -1,6 +1,6 @@
 <header class="menu">
     <nav class="menuContainer">
-        <h1 class="menuLogo">Aquí va el logo</h1>
+        <h1 class="menuLogo"><img src="assets/img/img_general/logo.png" alt="" srcset=""></h1>
 
         <ul class="menuLinks">
         <li class="menuItem">
