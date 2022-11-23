@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-11-2022 a las 22:58:21
--- Versión del servidor: 10.4.22-MariaDB
--- Versión de PHP: 7.3.33
+-- Tiempo de generación: 23-11-2022 a las 09:31:05
+-- Versión del servidor: 10.4.21-MariaDB
+-- Versión de PHP: 7.3.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -136,14 +136,9 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `foto`, `stock`, `id_categoria`, `estado`) VALUES
-<<<<<<< HEAD
-(10, 'Mono NFT', 'Dinerito', 564, 'assets/img_products/1.jpg', 2, 1, 0),
+(10, 'Mono NFT', 'Dinerito', 564, 'assets/img_products/1.jpg', 2, 1, 1),
 (11, 'Monito Sabroson', 'okey ', 231, 'assets/img_products/2.jpg', 3, 2, 0),
-=======
-(10, 'Mono NFT', 'Dinerito', 564, 'assets/img/img_products/1.jpg', 2, 1, 0),
-(11, 'Monito Sabroson', 'okey ', 231, 'assets/img/img_products/2.jpg', 3, 2, 0),
->>>>>>> 84a54f78ce83b8d0d204b9c5a69f3d7a557f86bb
-(13, 'asd', 'asd', 2, 'assets/img_products/3.png', 2, 2, 1);
+(13, 'asd', 'asd', 2, 'assets/img_products/13.jpg', 2, 2, 1);
 
 --
 -- Índices para tablas volcadas
