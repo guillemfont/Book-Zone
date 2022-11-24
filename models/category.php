@@ -4,6 +4,7 @@ class category{
 
     private $id_categoria;
     private $nombre;
+    private $estado = 0;
 
 
     public function __construct(){
@@ -98,6 +99,17 @@ class category{
             die($e->getMessage());
         }
     }
+    public function editConditionCategory($id, $estado)
+    {
+        try {
+            $query = $this->pdo->prepare("UPDATE categoria SET estado=? WHERE id_categoria=?;");
+            $query->execute(array($estado, $id));
+            $this->estado = $estado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
 
 
 }

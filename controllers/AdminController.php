@@ -88,6 +88,13 @@ class AdminController
         $productController->postConditionProduct();
     }
 
+    public function conditionCategory() {
+        $this->checkAdmin();
+        require_once 'categoryController.php';
+        $productController = new CategoryController();
+        $productController->postConditionCategory();
+    }
+
     public function closeAdmin() {
         unset($_SESSION['admin']);
         header('Location: index.php?controller=Admin&action=loginAdmin');

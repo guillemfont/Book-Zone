@@ -14,7 +14,7 @@
                 <th>Precio</th>
                 <th>Foto</th>
                 <th>Stock</th>
-                <th>ID_Categoria</th>
+                <th>Categoria</th>
                 <th>Editar</th>
                 <th>Desactivar</th>
             </tr>

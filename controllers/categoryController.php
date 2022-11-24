@@ -43,6 +43,21 @@ class CategoryController
         }
     }
 
+    public function postConditionCategory()
+    {
+        require_once "models/category.php";
+        $category = new Category();
+        $categoryid = $category->getCategoryById($_GET['id_categoria']);
+        if ($categoryid->estado == '0') {
+            $category->editConditionCategory($categoryid->id_categoria, 1);
+        } else {
+            $category->editConditionCategory($categoryid->id_categoria, 0);
+        }
+
+        header('Location: index.php?controller=Admin&action=viewTableCategory');
+    }
+
+
     public function postFormEditCategory()
     {
         require_once 'models/category.php';
