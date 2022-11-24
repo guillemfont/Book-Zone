@@ -61,11 +61,17 @@ class AdminController
         $productController->editTableProduct();
     }
 
-    public function searchProduct() {
+    public function postSearchProduct() {
         $this->checkAdmin();
         require_once 'productController.php';
         $productController = new ProductController();
-        $productController->postsearchProduct();
+        $productController->postFormSearchProduct();
+    }
+    public function postSearchCategory() {
+        $this->checkAdmin();
+        require_once 'categoryController.php';
+        $productController = new categoryController();
+        $productController->postFormSearchCategory();
     }
 
     public function postEditProduct() {
@@ -108,5 +114,13 @@ class AdminController
         $categoryController = new categoryController();
         $categoryController->postFormAddCategory();
     }
+
+    public function editCategory() {
+        $this->checkAdmin();
+        require_once 'categoryController.php';
+        $categoryController = new categoryController();
+        $categoryController->editTableCategory();
+    }
+    
 
 }

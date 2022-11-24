@@ -1,6 +1,6 @@
 <a href="index.php?controller=Admin&action=closeAdmin">Cerrar Sesion</a>
 <section class="tabla">
-    <form class="d-flex" action="#" method="GET">
+    <form class="d-flex" action="index.php?controller=Admin&action=postSearchCategory" method="POST">
         <a class="b_menu" href="index.php?controller=Admin&action=addCategory">Añadir categorias</a>
         <input class="buscar-form" type="search" placeholder="Busca el nombre" name="busqueda">
     </form>

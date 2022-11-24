@@ -37,7 +37,7 @@ class CategoryController
     public function editTableCategory()
     {
         require_once 'models/category.php';
-        if (!isset($_GET['id'])) {
+        if (!isset($_GET['id_category'])) {
             echo "<script>alert('No se ha pasado la ID correctamente');</script>";
             header('Location: index.php?controller=Admin&action=viewTableCategory');
         }
@@ -52,6 +52,13 @@ class CategoryController
         $category->editCategory();
         header('Location: index.php?controller=Admin&action=viewTableCategory');
 
+    }
+    public function postFormSearchCategory(){
+        require_once "models/category.php";
+        $category = new Category();
+        $category->setNombre($_POST['busqueda']);
+        $categoryList = $category->searchCategory();
+        require_once "views/admin/tableCategory.php";
     }
 
 }

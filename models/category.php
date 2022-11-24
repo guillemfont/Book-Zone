@@ -89,5 +89,15 @@ class category{
             die($e->getMessage());
         }
     }
+    public function searchCategory(){
+        try{
+            $query = $this->pdo->prepare("SELECT * FROM categoria WHERE nombre LIKE ?");
+            $query->execute(array("%".$this->nombre."%"));
+            return $query->fetchAll(PDO::FETCH_OBJ);
+        }catch (Exception $e){
+            die($e->getMessage());
+        }
+    }
+
 
 }
