@@ -9,27 +9,30 @@ echo '<header class="menu">
                 <a href="index.php" class="menuLink"><i class="fa-solid fa-house"></i></a>
             </li>
             <li class="menuItem menuItemShow">
-                <a href="#" class="menuLink"><p>Categorías</p><i class="fa-solid fa-angle-up" id="menuArrow"></i></a>
-                <ul class="menuNesting">
-                <li class="menuInside">
+            <a href="#" class="menuLink"><p>Categorías</p><i class="fa-solid fa-angle-up" id="menuArrow"></i></a>
+            <ul class="menuNesting">
+            <li class="menuInside">
                     <a href="#" class="menuLinkInside">Novela</a>
-                </li>
-                <li class="menuInside">
+                    </li>
+                    <li class="menuInside">
                     <a href="#" class="menuLinkInside">Ficción</a>
                 </li>
                 <li class="menuInside">
-                    <a href="#" class="menuLinkInside">Comedia</a>
+                <a href="#" class="menuLinkInside">Comedia</a>
                 </li>
                 <li class="menuInside">
                     <a href="#" class="menuLinkInside">Terror</a>
                 </li>
                 <li class="menuInside">
-                    <a href="#" class="menuLinkInside">Fantasía</a>
+                <a href="#" class="menuLinkInside">Fantasía</a>
                 </li>
-            </ul>
-        </li>
-        <li class="menuItem">
-                <a href="index.php" class="menuLink"><i class="fa-solid fa-cart-shopping"></i></a>
+                </ul>
+                </li>
+                <li class="menuItem">
+                    <a href="index.php" class="menuLink">Ofertas</a>
+                </li>
+                <li class="menuItem">
+                <button class="menuLink" id="cartShopContainer"><i class="fa-solid fa-cart-shopping" id="cartShopButton"></i></button>
             </li>
         ';
     if (!isset($_SESSION['client'])){
@@ -68,13 +71,12 @@ echo '<header class="menu">
             </li>
             </ul>
             
-            <menu class="menuCart"><i class="fa-solid fa-cart-shopping" id="menuBars"></i></menu>
+            <menu class="menuCart"><i class="fa-solid fa-cart-shopping" id="cartShopContainer2"></i></menu>
             <menu class="menuDisplay"><i class="fa-solid fa-bars" id="menuBars"></i></menu>
             
-            </nav>';
-            ?>
+            </nav>
+            
 
-        <!-- Modal carrito  -->
         <div class="cartModal">
             <p class="cartModalTitle">Cesta</p>
             <div class="cartModalCheckoutContainer">
@@ -89,9 +91,5 @@ echo '<header class="menu">
                 <button class="cartModalButton">Comprar</button>
             </div>
         </div>
-
-<?php
-
-
-echo'</header>';
+    </header>';
 ?>

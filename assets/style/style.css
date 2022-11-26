@@ -153,10 +153,13 @@ body {
   align-items: center;
   width: 15vh;
   justify-content: center;
+  border: none;
+  background-color: #1A202C;
 }
 
 .menuLink:hover {
   background-color: #5e7094;
+  cursor: pointer;
 }
 
 
@@ -169,6 +172,10 @@ body {
 
 #userIcon {
   font-size: 20px;
+}
+
+#cartShopButton {
+  font-size: 15px;
 }
 
 .menuNesting {
@@ -210,10 +217,6 @@ body {
   display: none;
 }
 
-.menuCart {
-  display: none;
-}
-
 .cartModal {
   background-color: #273044;
   width: 360px;
@@ -227,6 +230,10 @@ body {
   z-index: 1;
   opacity: 0.95;
   display: none;
+}
+
+.cartModalDisplay {
+  display: inline;
 }
 
 .cartModalTitle {
@@ -563,11 +570,12 @@ body {
   grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr;
   }
   .mainMenu {
-    padding-top: 20px;
+    padding-top: 30px;
     display: block;
     margin-bottom: 5vh;
     background-color:  #efeff8;
     border-radius: 20px;
+    box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.6);
   }
   .galleryImageContainer {
     margin: auto;
@@ -575,12 +583,69 @@ body {
     background-repeat: no-repeat;
     background-size:cover;
     width: 60%;
-    border: 20px solid  #c8c9fd;
+    border: 20px solid  #d1d1fa;
     border-radius: 10px;
+  }
+  .galleryImageContainer:hover {
+    cursor: pointer;
+    opacity: 0.8;
   }
   #previous, #next, .detailsDescription {
       display: none;
     }
+  .modalMoreInfo {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: none;
+  }
+  .modalMoreInfoDisplay {
+    display: inline;
+  }
+  .xmark {
+    margin: 5vh auto 1vh auto;
+    width: 55%;
+    text-align: right;
+  }
+  #closeMoreInfo {
+    font-size: 40px;
+    color: #efeff8;
+  }
+  #closeMoreInfo:hover {
+    cursor: pointer;
+  }
+  .menuMoreInfo {
+    margin: auto;
+    background-color:  #efeff8;
+    border-radius: 30px;
+    width: 50%;
+    padding: 5vh 5%;
+  }
+  .menuCart {
+    display: none;
+  }
+  .galleryImageContainerMoreInfo {
+    margin: auto;
+    height: 40vh;
+    background-repeat: no-repeat;
+    background-size:cover;
+    width: 30%;
+    border: 20px solid  #d1d1fa;
+    border-radius: 10px;
+    margin-top: 2vh;
+  }
+  .detailsDescriptionInfo {
+    margin-top: 3vh;
+  }
+  .classStock {
+    color: #5f61c7;
+  font-size: 1.2em;
+  margin-top: 15px;
+  }
   }
   
 @media (max-width:800px){
@@ -601,7 +666,6 @@ body {
     display: flex;
   }
   .cartModal {
-    display: inline;
     left: 15%;
   }
   .menuItem {
@@ -634,6 +698,9 @@ body {
     height: auto;
     justify-content: left;
     width: 100%;
+    border: none;
+    background-color: #1A202C;
+
   }
   .menuLinkContainer {
     width: auto;
@@ -645,6 +712,9 @@ body {
   }
   .menuLink:hover {
     background-color: #1A202C;
+  }
+  #cartShopContainer2 {
+    cursor: pointer;
   }
   .menuNesting {
     display: grid;
@@ -669,6 +739,9 @@ body {
     background-size:cover;
     width: 80%;
     margin: auto;
+  }
+  .modalMoreInfo {
+    display: none;
   }
 }
 
