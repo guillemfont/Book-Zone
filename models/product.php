@@ -95,17 +95,19 @@ class product
     /**
      * @param mixed $foto
      */
-    public function setFoto($foto, $filenameId)
+    public function setFoto($foto): void
     {
-        $flagOK = true;
-        $target_dir = "assets/img/img_products";
-        $ext = pathinfo($foto, PATHINFO_EXTENSION);
-        $target_file = $target_dir . "/" . $filenameId . "." . $ext;
-        if (!move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)) {
-            $flagOK = false;
-        }
-        $this->foto = $target_file;
-        return $flagOK;
+        // $flagOK = true;
+        // $target_dir = "assets/img/img_products";
+        // $ext = pathinfo($foto, PATHINFO_EXTENSION);
+        // $target_file = $target_dir . "/" . $filenameId . "." . $ext;
+        // if (!move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)) {
+        //     $flagOK = false;
+        // }
+        // $this->foto = $target_file;
+        // return $flagOK;
+        $this->foto = $foto;
+
 
     }
 

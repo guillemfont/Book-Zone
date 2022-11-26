@@ -42,7 +42,7 @@ class ClientController
 
     public function closeClient() {
         unset($_SESSION['client']);
-        header('Location: index.php?controller=Client&action=loginClient');
+        header('Location: index.php');
     }
 
     public function registerClient()

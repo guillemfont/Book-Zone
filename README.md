@@ -39,3 +39,10 @@ Crear subcarpetas para mejor organización
 Utilizar etiquetas html como "footer" o "header" (NO DIV INNECESARIO)
 
 Formatear siempre el código (extensión prettier)
+
+
+
+(Cosas que necesito:
+(€) 
+https://www.casadellibro.com/libro-el-metal-perdido-nacidos-de-la-bruma-mistborn-7/9788418037733/13206598
+)

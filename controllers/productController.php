@@ -35,10 +35,12 @@ class ProductController
         $product->setNombre($_POST['nombre']);
         $product->setDescripcion($_POST['descripcion']);
         $product->setPrecio($_POST['precio']);
-        if (!$product->setFoto($_FILES['foto']['name'], $_POST['id'])) {
+        
+        if (!$product->setFoto(file_get_contents($_FILES['img']['tmp_name']))) {
             echo "<script>alert('Error al subir la imagen');</script>";
-            header('Location: index.php?controller=Admin&action=addProduct');
+            header('Location: index.php?controller=Admin&action=editProduct');
         }
+        
         $product->setStock($_POST['stock']);
         $product->setIdCategoria($_POST['id_categoria']);
         $product->addProduct();
@@ -72,7 +74,7 @@ class ProductController
         $product->setNombre($_POST['nombre']);
         $product->setDescripcion($_POST['descripcion']);
         $product->setPrecio($_POST['precio']);
-        if (!$product->setFoto($_FILES['foto']['name'], $_POST['id'])) {
+        if (!$product->setFoto(file_get_contents($_FILES['img']['tmp_name']))) {
             echo "<script>alert('Error al subir la imagen');</script>";
             header('Location: index.php?controller=Admin&action=editProduct');
         }
@@ -85,7 +87,7 @@ class ProductController
 
     public function isCondition(): bool
     {
-        return (!isset($_POST['id']) || !isset($_POST['nombre']) || !isset($_POST['descripcion']) || !isset($_POST['precio']) || !isset($_POST['foto']) || $_FILES['foto']['name'] != "" || !isset($_POST['stock']) || !isset($_POST['id_categoria']));
+        return (!isset($_POST['id']) || !isset($_POST['nombre']) || !isset($_POST['descripcion']) || !isset($_POST['precio']) || !isset($_POST['stock']) || !isset($_POST['id_categoria']));
     }
 
     public function postConditionProduct()

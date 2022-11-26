@@ -25,6 +25,7 @@ function responsiveMenu(){
   const listElements =document.querySelectorAll('.menuItemShow');
   const list = document.querySelector('.menuLinks');
   const menu = document.querySelector('.menuDisplay');
+  const previous = document.querySelector('#previous');
 
   const addClick = function() {
     // element.classList.remove('menuItem');
@@ -43,7 +44,6 @@ function responsiveMenu(){
 
   menu.addEventListener('click', () => {
     list.classList.toggle('menuLinksShow');
-    console.log('debería hacer algo');
   })
 
   addClick();
