@@ -31,10 +31,10 @@ class ProductController
         }
         require_once "models/product.php";
         $product = new Product();
-        $product->setId($_POST['id']);
         $product->setNombre($_POST['nombre']);
         $product->setDescripcion($_POST['descripcion']);
         $product->setPrecio($_POST['precio']);
+        $product->setAutor($_POST['autor']);
         
         if (!$product->setFoto(file_get_contents($_FILES['img']['tmp_name']))) {
             echo "<script>alert('Error al subir la imagen');</script>";
@@ -73,6 +73,7 @@ class ProductController
         $product = new Product();
         $product->setNombre($_POST['nombre']);
         $product->setDescripcion($_POST['descripcion']);
+        $product->setAutor($_POST['autor']);
         $product->setPrecio($_POST['precio']);
         if (!$product->setFoto(file_get_contents($_FILES['img']['tmp_name']))) {
             echo "<script>alert('Error al subir la imagen');</script>";
@@ -87,7 +88,7 @@ class ProductController
 
     public function isCondition(): bool
     {
-        return (!isset($_POST['id']) || !isset($_POST['nombre']) || !isset($_POST['descripcion']) || !isset($_POST['precio']) || !isset($_POST['stock']) || !isset($_POST['id_categoria']));
+        return (!isset($_POST['nombre']) || !isset($_POST['descripcion']) || !isset($_POST['precio']) || !isset($_POST['stock']) || !isset($_POST['id_categoria']));
     }
 
     public function postConditionProduct()

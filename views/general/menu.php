@@ -1,12 +1,18 @@
 <section class="container">
+
+<?php if (isset($productList)) {
+                foreach ($productList as $product) : ?>
+
+
+
     <section class="mainMenu">
         <article class="gallery">
-            <div class="galleryImageContainer" style='background-image:url(assets/img/img_books/book1.jpg);'></div>
+            <div class="galleryImageContainer" style='background-image:url(data:image/jpg;base64,<?php echo base64_encode($product->foto); ?>);'></div>
         </article>
         <article class="details">
-            <h2 class="detailsAuthor">Nombre del autor</h2>
-            <h2 class="detailsTitle">Nombre del libro</h2>
-            <p class="detailsDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos adipisci exercitationem repudiandae totam fuga sequi architecto temporibus accusamus quo modi aut quod repellendus laboriosam facere ad, reiciendis incidunt inventore possimus?</p>
+            <h2 class="detailsAuthor"><?php echo ($product->autor); ?></h2>
+            <h2 class="detailsTitle"><?php echo ($product->nombre); ?></h2>
+            <p class="detailsDescription"><?php echo ($product->descripcion); ?></p>
             <div class="detailsPrices">
                 <p class="detailsNewPrice">24,99€ <span class="detailsDiscount">-50%</span> </p>
                 <p class="detailsBeforePrice">Antes: <span class="detailsBeforeLine">49,99€</span></p>
@@ -26,16 +32,22 @@
             <i class="fa-solid fa-circle-xmark" id="closeMoreInfo"></i>
     </div>
     <div class="menuMoreInfo">
-            <h2 class="detailsAuthor">Nombre del autor</h2>
-            <h2 class="detailsTitle">Nombre del libro</h2>
+            <h2 class="detailsAuthor"><?php echo ($product->autor); ?></h2>
+            <h2 class="detailsTitle"><?php echo ($product->nombre); ?></h2>
             <article class="gallery">
-                <div class="galleryImageContainerMoreInfo" style='background-image:url(assets/img/img_books/book1.jpg);'></div>
+                <div class="galleryImageContainerMoreInfo" style='background-image:url(data:image/jpg;base64,<?php echo base64_encode($product->foto); ?>);'></div>
             </article>
             <article class="details">
             <h2 class="detailsAuthor">Categoría</h2>
-                <p class="detailsDescriptionInfo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos adipisci exercitationem repudiandae totam fuga sequi architecto temporibus accusamus quo modi aut quod repellendus laboriosam facere ad, reiciendis incidunt inventore possimus?</p>
+                <p class="detailsDescriptionInfo"><?php echo ($product->descripcion); ?></p>
                 <p class="classStock">En stock.</p>
             </article>
         </div>
     </div>
+
+
+
+
+    <?php endforeach;
+            } ?>
 </section>

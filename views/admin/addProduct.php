@@ -2,9 +2,9 @@
     <div class="contenedor-product">
         <h2 class="login-header">Añadir Producto</h2>
         <form action="index.php?controller=Admin&action=postAddProduct" class="login" method="POST" enctype="multipart/form-data">
-            <p>ID: <input type="text" required="required" name="id" /></p>
             <p>Nombre: <input type="text" required="" name="nombre" /></p>
             <p>Descripción: <input type="name" required="required" name="descripcion" /> </p>
+            <p>Autor: <input type="name" required="required" name="autor" /> </p>
             <p>Precio: <input type="name" required="required" name="precio" /> </p>
             <p>Foto:<input type="file" name="img" id="imatge" required></p>
             <p>Stock: <input type="text" required="required" name="stock" /> </p>

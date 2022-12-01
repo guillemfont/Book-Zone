@@ -12,7 +12,7 @@ class product
     private $stock;
     private $id_categoria;
     private $estado = 0;
-
+    private $autor;
 
     public function __construct()
     {
@@ -20,81 +20,59 @@ class product
 
     }
 
-    /**
-     * @return mixed
-     */
     public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param mixed $id
-     */
     public function setId($id): void
     {
         $this->id = $id;
     }
 
-    /**
-     * @return mixed
-     */
     public function getNombre()
     {
         return $this->nombre;
     }
 
-    /**
-     * @param mixed $nombre
-     */
     public function setNombre($nombre): void
     {
         $this->nombre = $nombre;
     }
 
-    /**
-     * @return mixed
-     */
     public function getDescripcion()
     {
         return $this->descripcion;
     }
 
-    /**
-     * @param mixed $descripcion
-     */
     public function setDescripcion($descripcion): void
     {
         $this->descripcion = $descripcion;
     }
 
-    /**
-     * @return mixed
-     */
+    public function getAutor() {
+        return$this->autor;
+    }
+    
+    public function setAutor($autor) {
+        $this->autor = $autor;
+    }
+
     public function getPrecio()
     {
         return $this->precio;
     }
 
-    /**
-     * @param mixed $precio
-     */
     public function setPrecio($precio): void
     {
         $this->precio = $precio;
     }
 
-    /**
-     * @return mixed
-     */
     public function getFoto()
     {
         return $this->foto;
     }
 
-    /**
-     * @param mixed $foto
-     */
     public function setFoto($foto): void
     {
         // $flagOK = true;
@@ -111,33 +89,21 @@ class product
 
     }
 
-    /**
-     * @return mixed
-     */
     public function getStock()
     {
         return $this->stock;
     }
 
-    /**
-     * @param mixed $stock
-     */
     public function setStock($stock): void
     {
         $this->stock = $stock;
     }
 
-    /**
-     * @return mixed
-     */
     public function getIdCategoria()
     {
         return $this->id_categoria;
     }
 
-    /**
-     * @param mixed $id_categoria
-     */
     public function setIdCategoria($id_categoria): void
     {
         $this->id_categoria = $id_categoria;
@@ -157,8 +123,8 @@ class product
     public function addProduct()
     {
         try {
-            $query = $this->pdo->prepare("INSERT INTO productos (nombre, descripcion, precio, foto, stock, id_categoria, estado) VALUES (?,?,?,?,?,?,?);");
-            $query->execute(array($this->nombre, $this->descripcion, $this->precio, $this->foto, $this->stock, $this->id_categoria, $this->estado));
+            $query = $this->pdo->prepare("INSERT INTO productos (nombre, descripcion, autor, precio, foto, stock, id_categoria, estado) VALUES (?,?,?,?,?,?,?,?);");
+            $query->execute(array($this->nombre, $this->descripcion, $this->autor, $this->precio, $this->foto, $this->stock, $this->id_categoria, $this->estado));
         } catch (Exception $e) {
             die($e->getMessage());
         }
@@ -167,8 +133,8 @@ class product
     public function editProduct()
     {
         try {
-            $query = $this->pdo->prepare("UPDATE productos SET nombre=?, descripcion=?, precio=?, foto=?, stock=?, id_categoria=? WHERE id=?;");
-            $query->execute(array($this->nombre, $this->descripcion, $this->precio, $this->foto, $this->stock, $this->id_categoria, $this->id));
+            $query = $this->pdo->prepare("UPDATE productos SET nombre=?, descripcion=?, autor=? ,precio=?, foto=?, stock=?, id_categoria=? WHERE id=?;");
+            $query->execute(array($this->nombre, $this->descripcion, $this->autor, $this->precio, $this->foto, $this->stock, $this->id_categoria, $this->id));
         } catch (Exception $e) {
             die($e->getMessage());
         }
