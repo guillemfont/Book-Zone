@@ -129,6 +129,12 @@ class AdminController
         $categoryController = new categoryController();
         $categoryController->editTableCategory();
     }
+    public function postEditCategory() {
+        $this->checkAdmin();
+        require_once 'categoryController.php';
+        $categoryController = new CategoryController();
+        $categoryController->postFormEditCategory();
+    }
     
 
 }

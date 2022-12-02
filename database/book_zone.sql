@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-12-2022 a las 19:00:25
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 7.4.29
+-- Tiempo de generación: 02-12-2022 a las 18:10:06
+-- Versión del servidor: 10.4.22-MariaDB
+-- Versión de PHP: 7.3.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -49,18 +49,20 @@ INSERT INTO `administrador` (`admin`, `password`) VALUES
 
 CREATE TABLE `categoria` (
   `id_categoria` int(2) NOT NULL,
-  `nombre` varchar(25) NOT NULL
+  `nombre` varchar(25) NOT NULL,
+  `estado` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `categoria`
 --
 
-INSERT INTO `categoria` (`id_categoria`, `nombre`) VALUES
-(1, 'Novela terror'),
-(2, 'Biografia'),
-(3, 'Rominc'),
-(4, 'asaa');
+INSERT INTO `categoria` (`id_categoria`, `nombre`, `estado`) VALUES
+(1, 'aaa', 0),
+(2, 'Biografia', 0),
+(3, 'Rominc', 0),
+(4, 'asaa', 0),
+(7, 'a', 0);
 
 -- --------------------------------------------------------
 

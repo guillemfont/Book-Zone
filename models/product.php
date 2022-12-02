@@ -17,7 +17,6 @@ class product
     public function __construct()
     {
         $this->pdo = (new Database)->connect();
-
     }
 
     public function getId()
@@ -50,11 +49,13 @@ class product
         $this->descripcion = $descripcion;
     }
 
-    public function getAutor() {
-        return$this->autor;
+    public function getAutor()
+    {
+        return $this->autor;
     }
-    
-    public function setAutor($autor) {
+
+    public function setAutor($autor)
+    {
         $this->autor = $autor;
     }
 
@@ -85,8 +86,6 @@ class product
         // $this->foto = $target_file;
         // return $flagOK;
         $this->foto = $foto;
-
-
     }
 
     public function getStock()
@@ -161,15 +160,14 @@ class product
             die($e->getMessage());
         }
     }
-   public function searchProduct(){
+    public function searchProduct()
+    {
         try {
             $query = $this->pdo->prepare("SELECT * FROM productos WHERE nombre LIKE ?;");
-            $query->execute(array("%". $this->nombre ."%"));
+            $query->execute(array("%" . $this->nombre . "%"));
             return $query->fetchAll(PDO::FETCH_OBJ);
         } catch (Exception $e) {
             die($e->getMessage());
         }
     }
-
 }
-

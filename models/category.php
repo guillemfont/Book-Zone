@@ -74,7 +74,7 @@ class category{
 
     public function editCategory(){
         try{
-            $query = $this->pdo->prepare("UPDATE categoria SET nombre = ? WHERE id_categoria = ?");
+            $query = $this->pdo->prepare("UPDATE categoria SET nombre=? WHERE id_categoria=?");
             $query->execute(array($this->nombre, $this->id_categoria));
         }catch (Exception $e){
             die($e->getMessage());
@@ -109,7 +109,6 @@ class category{
             die($e->getMessage());
         }
     }
-
 
 
 }
