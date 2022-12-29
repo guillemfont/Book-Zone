@@ -57,6 +57,7 @@ function responsiveMenu() {
     const plusButton = document.querySelector("#detailsInputPlus");
     let userInput = document.querySelector(".detailsInputNumber");
     let userInputNumber = 0;
+    const sendButton = document.querySelector(".detailsButton");
 
     plusButton.addEventListener("click", () => {
       userInputNumber++;
@@ -69,6 +70,11 @@ function responsiveMenu() {
       }
       userInput.value = userInputNumber;
     });
+
+    sendButton.addEventListener("click", () => {
+      console.log(userInput.value);
+    })
+
   }
 
   // Desplegar/Ocultar cesta de la compra:
