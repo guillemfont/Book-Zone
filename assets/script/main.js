@@ -51,31 +51,6 @@ function responsiveMenu() {
     if (!window.innerWidth > 800) addClick();
   });
 
-  // Número de productos del ménu:
-  if (document.querySelector("#detailsInputMinus")) {
-    const minusButton = document.querySelector("#detailsInputMinus");
-    const plusButton = document.querySelector("#detailsInputPlus");
-    let userInput = document.querySelector(".detailsInputNumber");
-    let userInputNumber = 0;
-    const sendButton = document.querySelector(".detailsButton");
-
-    plusButton.addEventListener("click", () => {
-      userInputNumber++;
-      userInput.value = userInputNumber;
-    });
-
-    minusButton.addEventListener("click", () => {
-      if (userInputNumber > 0) {
-        userInputNumber--;
-      }
-      userInput.value = userInputNumber;
-    });
-
-    sendButton.addEventListener("click", () => {
-      console.log(userInput.value);
-    })
-
-  }
 
   // Desplegar/Ocultar cesta de la compra:
   if (document.querySelector("#cartShopContainer")) {
@@ -91,18 +66,45 @@ function responsiveMenu() {
       cartModal.classList.toggle("cartModalDisplay");
     });
 
-    // Desplegar/Ocultar más información sobre el producto:
-    if (document.querySelector(".galleryImageContainer")) {
-      const galleryImg = document.querySelector(".galleryImageContainer");
-      const modalInfo = document.querySelector(".modalMoreInfo");
-      const mark = document.querySelector(".xmark");
-
-      galleryImg.addEventListener("click", () => {
-        modalInfo.classList.toggle("modalMoreInfoDisplay");
-      });
-      mark.addEventListener("click", () => {
-        modalInfo.classList.toggle("modalMoreInfoDisplay");
-      });
-    }
   }
 }
+
+  // Número de productos del ménu:
+  function anadirCarrito(id) {
+    const minusButton = document.querySelector("#detailsInputMinus"+id);
+    const plusButton = document.querySelector("#detailsInputPlus"+id);
+    let userInput = document.querySelector(".detailsInputNumber"+id);
+    let userInputNumber = 0;
+    const sendButton = document.querySelector(".detailsButton"+id);
+
+    plusButton.addEventListener("click", () => {
+      userInputNumber++;
+      userInput.value = userInputNumber;
+    });
+
+    minusButton.addEventListener("click", () => {
+      if (userInputNumber > 0) {
+        userInputNumber--;
+      }
+      userInput.value = userInputNumber;
+    });
+
+    sendButton.addEventListener("click", () => {
+
+    })
+
+  }
+
+  // Desplegar/Ocultar más información sobre el producto:
+  function desplegarImagen(id) {
+    const galleryImg = document.querySelector(".galleryImageContainer"+id);
+    const modalInfo = document.querySelector(".modalMoreInfo"+id);
+    const mark = document.querySelector(".xmark"+id);
+
+    galleryImg.addEventListener("click", () => {
+      modalInfo.classList.toggle("modalMoreInfoDisplay");
+    });
+    mark.addEventListener("click", () => {
+      modalInfo.classList.toggle("modalMoreInfoDisplay");
+    });
+  }

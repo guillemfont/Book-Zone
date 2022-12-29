@@ -1,13 +1,15 @@
 <section class="container">
 
 <?php if (isset($productList)) {
-                foreach ($productList as $product) : ?>
+                foreach ($productList as $product) : 
+                ?>
 
 
 
     <section class="mainMenu">
+    <iframe onload="desplegarImagen(<?php echo ($product->id);?>)" style="display: none"></iframe>
         <article class="gallery">
-            <div class="galleryImageContainer" style='background-image:url(data:image/jpg;base64,<?php echo base64_encode($product->foto); ?>);'></div>
+            <div class="galleryImageContainer<?php echo ($product->id); ?> galleryImageContainer" style='background-image:url(data:image/jpg;base64,<?php echo base64_encode($product->foto); ?>);'></div>
         </article>
         <article class="details">
             <h2 class="detailsAuthor"><?php echo ($product->autor); ?></h2>
@@ -27,15 +29,16 @@
                 }
             ?>
                 </div>
+            <iframe onload="anadirCarrito(<?php echo ($product->id);?>)" style="display: none"></iframe>
             <div class="detailsQuantity">
                 <div class="detailsInput">
-                    <i class="fa-solid fa-minus" id="detailsInputMinus"></i>
-                    <input type="text" value="0" class="detailsInputNumber">
-                    <i class="fa-solid fa-plus" id="detailsInputPlus"></i>
+                    <i class="fa-solid fa-minus detailsInputMinus" id="detailsInputMinus<?php echo ($product->id);?>"></i>
+                    <input type="text" value="0" class="detailsInputNumber<?php echo ($product->id);?> detailsInputNumber">
+                    <i class="fa-solid fa-plus detailsInputPlus" id="detailsInputPlus<?php echo ($product->id);?>"></i>
                 </div>
                 <?php
                     if($product->stock > 0){
-                      echo '<button class="detailsButton"><i class="fa-solid fa-cart-shopping"></i> Añadir a la cesta</button>';
+                      echo '<button class="detailsButton'.$product->id.' detailsButton"><i class="fa-solid fa-cart-shopping"></i> Añadir a la cesta</button>';
                     }else {
                         echo '<button class="detailsButtonDisabled">No hay unidades</button>';
                     }
@@ -43,8 +46,8 @@
             </div>
         </article>
     </section>
-    <div class="modalMoreInfo">
-        <div class="xmark">
+    <div class="modalMoreInfo<?php echo ($product->id); ?> modalMoreInfo">
+        <div class="xmark<?php echo ($product->id); ?> xmark">
             <i class="fa-solid fa-circle-xmark" id="closeMoreInfo"></i>
     </div>
     <div class="menuMoreInfo">
