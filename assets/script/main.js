@@ -76,6 +76,8 @@ function responsiveMenu() {
     let userInput = document.querySelector(".detailsInputNumber"+id);
     let userInputNumber = 0;
     const sendButton = document.querySelector(".detailsButton"+id);
+    const closeButton = document.querySelector(".modalNoProductsB");
+    let modal = document.querySelector(".modalNoProducts");
 
     plusButton.addEventListener("click", () => {
       userInputNumber++;
@@ -90,7 +92,16 @@ function responsiveMenu() {
     });
 
     sendButton.addEventListener("click", () => {
+      if(userInput.value > 0){
+          window.location.href = `index.php?product=${id}&number=${userInput.value}&controller=Cart&action=addToCart`;
+      } else {
+        modal.classList.toggle("modalNoProductDisplay");
+      }
+        
+    })
 
+    closeButton.addEventListener("click", () => {
+      modal.classList.remove("modalNoProductDisplay");
     })
 
   }
