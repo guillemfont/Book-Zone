@@ -326,6 +326,12 @@ body {
   cursor: pointer;
 }
 
+.cartLink {
+  text-decoration: underline;
+  color: #fff;
+  font-weight: 900;
+}
+
 #menuBars {
   display: block;
   width: 36px;

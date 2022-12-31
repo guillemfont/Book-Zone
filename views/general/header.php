@@ -76,19 +76,25 @@ echo '<header class="menu">
             
             </nav>
             
-
         <div class="cartModal">
             <p class="cartModalTitle">Cesta</p>
             <div class="cartModalCheckoutContainer">
-                <div class="cartModalDetailsContainer">
-                    <img src="assets/img/img_books/book1.jpg" class="cartModalImg">
+                <div class="cartModalDetailsContainer">';
+                if(isset($_SESSION['client'])){
+                 echo '<img src="assets/img/img_books/book1.jpg" class="cartModalImg">
                     <div>
-                        <p class="cartModalProduct">Nombre del libro</p>
-                        <p class="cartModalPrice">24,99€ x 1 <span class="cartModalPriceBold">24,99€</span></p>
+                    <p class="cartModalProduct">Nombre del libro</p>
+                    <p class="cartModalPrice">24,99€ x 1 <span class="cartModalPriceBold">24,99€</span></p>
                     </div>
                     <i class="fa-solid fa-trash-can" id="cartModalDelete"></i>
                 </div>
-                <button class="cartModalButton">Comprar</button>
+                <button class="cartModalButton">Comprar</button>';
+                } else {
+                    ?>
+                    <p><a class="cartLink" href="index.php?log=true&controller=Client&action=loginClient">Inicia sessión</a> para usar la cesta de la compra.</p>
+                    <?php
+                }
+                echo '
             </div>
         </div>
     </header>';
