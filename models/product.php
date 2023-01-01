@@ -1,6 +1,6 @@
 <?php
 
-class product
+class Product
 {
     private $pdo;
 
@@ -134,6 +134,16 @@ class product
         try {
             $query = $this->pdo->prepare("UPDATE productos SET nombre=?, descripcion=?, autor=? ,precio=?, foto=?, stock=?, id_categoria=? WHERE id=?;");
             $query->execute(array($this->nombre, $this->descripcion, $this->autor, $this->precio, $this->foto, $this->stock, $this->id_categoria, $this->id));
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function editProductNoFoto()
+    {
+        try {
+            $query = $this->pdo->prepare("UPDATE productos SET nombre=?, descripcion=?, autor=? ,precio=?, stock=?, id_categoria=? WHERE id=?;");
+            $query->execute(array($this->nombre, $this->descripcion, $this->autor, $this->precio, $this->stock, $this->id_categoria, $this->id));
         } catch (Exception $e) {
             die($e->getMessage());
         }

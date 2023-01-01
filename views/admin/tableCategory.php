@@ -14,30 +14,34 @@
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($categoryList as $categoria) : ?>
-            <tr>
-                <td><?php echo ($categoria->id_categoria); ?></td>
-                <td><?php echo ($categoria->nombre); ?></td>
-                <td>
-                    <a title="Edit"
-                       href="index.php?controller=Admin&action=editCategory&id_categoria=<?php echo ($categoria->id_categoria); ?>">
-                        <img src="assets/img/img_icons/editar.svg" alt="Editar">
-                    </a>
-                </td>
-                <td>
-                    <?php
-                    $urlEstado = "index.php?controller=Admin&action=conditionCategory&id_categoria=" . $categoria->id_categoria;
-                    if ($categoria->estado == 1) {
-                        echo "<a title='Desactivar' href='$urlEstado'><img src='assets/img/img_icons/tick.svg' alt='Activar'></a>";
-                    } else {
-                        echo "<a title='Activar' href='$urlEstado'><img src='assets/img/img_icons/x.svg' alt='Desactivar'></a>";
-                    }
-                    ?>
-
-                </td>
-
-            </tr>
-        <?php endforeach; ?>
+        <?php 
+            if(!empty($categoryList)):
+                foreach($categoryList as $value)
+                    foreach($value as $v):?>
+                        <tr>
+                            <td><?php echo ($v["id_categoria"]); ?></td>
+                            <td><?php echo ($v["nombre"]); ?></td>
+                            <td>
+                                <a title="Edit"
+                                href="index.php?controller=Admin&action=editCategory&id_categoria=<?php echo ($v["id_categoria"]); ?>">
+                                    <img src="assets/img/img_icons/editar.svg" alt="Editar">
+                                </a>
+                            </td>
+                            <td>
+                                <?php
+                                $urlEstado = "index.php?controller=Admin&action=conditionCategory&id_categoria=" . $v["id_categoria"];
+                                if ($v["estado"] == 1) {
+                                    echo "<a title='Desactivar' href='$urlEstado'><img src='assets/img/img_icons/tick.svg' alt='Activar'></a>";
+                                } else {
+                                    echo "<a title='Activar' href='$urlEstado'><img src='assets/img/img_icons/x.svg' alt='Desactivar'></a>";
+                                }
+                                ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <td>No hay categorias</td>
+                <?php endif ?>
         </tbody>
     </table>
 </section>

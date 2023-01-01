@@ -1,7 +1,7 @@
 <?php
-class category{
+class Category{
     private $pdo;
-
+    public $elementos;
     private $id_categoria;
     private $nombre;
     private $estado = 0;
@@ -46,9 +46,12 @@ class category{
 
     public function getCategoryList(){
         try{
-            $query = $this->pdo->prepare("SELECT * FROM categoria");
-            $query->execute();
-            return $query->fetchAll(PDO::FETCH_OBJ);
+            $consulta="select * from categoria";
+            $resultado=$this->pdo->query($consulta);
+            while ($filas=$resultado->FETCHALL(PDO::FETCH_ASSOC)) {
+                $this->elementos[]=$filas;
+            }
+            return $this->elementos;
         }catch (Exception $e){
             die($e->getMessage());
         }
@@ -56,8 +59,8 @@ class category{
 
     public function addCategory(){
         try{
-            $query = $this->pdo->prepare("INSERT INTO categoria (id_categoria, nombre) VALUES (?,?)");
-            $query->execute(array($this->id_categoria, $this->nombre));
+            $query = $this->pdo->prepare("INSERT INTO categoria VALUES (NULL,?,1)");
+            $query->execute(array($this->nombre));
         }catch (Exception $e){
             die($e->getMessage());
         }

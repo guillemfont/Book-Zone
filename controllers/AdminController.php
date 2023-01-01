@@ -105,21 +105,21 @@ class AdminController
     {
         $this->checkAdmin();
         require_once "models/category.php";
-        $productController = new categoryController();
+        $productController = new CategoryController();
         $productController->viewTableCategory();
     }
 
     public function addCategory() {
         $this->checkAdmin();
         require_once 'productController.php';
-        $categoryController = new categoryController();
+        $categoryController = new CategoryController();
         $categoryController->addTableCategory();
     }
 
     public function postAddCategory() {
         $this->checkAdmin();
         require_once 'productController.php';
-        $categoryController = new categoryController();
+        $categoryController = new CategoryController();
         $categoryController->postFormAddCategory();
     }
 

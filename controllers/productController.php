@@ -1,4 +1,6 @@
 <?php
+require_once "models/product.php";
+require_once 'models/category.php';
 
 class ProductController
 {
@@ -12,77 +14,73 @@ class ProductController
 //    }
     public function viewTableProduct()
     {
-        require_once "models/product.php";
         $productList = (new Product())->getProductList();
         require_once "views/admin/menuAdmin.php";
     }
 
     public function addTableProduct()
     {
-        require_once "views/admin/addProduct.php";
-    }
-
-    public function postFormAddProduct()
-    {
-        $condition = $this->isCondition();
-        if ($condition) {
-            echo "<script>alert('Faltan campos por rellenar');</script>";
-            header('Location: index.php?controller=Admin&action=addProduct');
-        }
         require_once "models/product.php";
-        $product = new Product();
-        $product->setNombre($_POST['nombre']);
-        $product->setDescripcion($_POST['descripcion']);
-        $product->setPrecio($_POST['precio']);
-        $product->setAutor($_POST['autor']);
-        
-        if (!$product->setFoto(file_get_contents($_FILES['img']['tmp_name']))) {
-            echo "<script>alert('Error al subir la imagen');</script>";
-            header('Location: index.php?controller=Admin&action=editProduct');
-        }
-        
-        $product->setStock($_POST['stock']);
-        $product->setIdCategoria($_POST['id_categoria']);
-        $product->addProduct();
-        header('Location: index.php?controller=Admin&action=menuAdmin');
-
+        $categoryList = (new Category())->getCategoryList();
+        require_once "views/admin/addProduct.php";
     }
 
     public function editTableProduct()
     {
-        require_once "models/product.php";
         if (!isset($_GET['id'])) {
             echo "<script>alert('No se ha pasado la ID correctamente');</script>";
             header('Location: index.php?controller=Admin&action=menuAdmin');
         }
 
         $product = (new Product())->getProductById($_GET['id']);
+        
+        require_once 'models/category.php';
+        $categoryList = (new Category())->getCategoryList();
         require_once "views/admin/editProduct.php";
+    }
+
+    public function postFormAddProduct()
+    {
+        $product = new Product();
+        $product->setNombre($_POST['nombre']);
+        $product->setDescripcion($_POST['descripcion']);
+        $product->setPrecio($_POST['precio']);
+        $product->setAutor($_POST['autor']);
+        try {
+            $tmp_nom=$_FILES ["fotoP"]['tmp_name'];
+        } catch (Throwable $th) {
+            echo "<script>alert('Error al subir el archivo');</script>";
+        }
+        $product->setFoto(file_get_contents($tmp_nom));
+        $product->setStock($_POST['stock']);
+        $product->setIdCategoria(intval($_POST['categorias']));
+        $product->addProduct();
+        header('Location: index.php?controller=Admin&action=menuAdmin');
+
     }
 
     public function postFormEditProduct()
     {
-
-        $condition = $this->isCondition();
-        if ($condition) {
-            echo "<script>alert('Faltan campos por rellenar');</script>";
-            header("Location: index.php?controller=Admin&action=editProduct&id=1");
-        }
-
-        require_once "models/product.php";
         $product = new Product();
         $product->setNombre($_POST['nombre']);
         $product->setDescripcion($_POST['descripcion']);
         $product->setAutor($_POST['autor']);
         $product->setPrecio($_POST['precio']);
-        if (!$product->setFoto(file_get_contents($_FILES['img']['tmp_name']))) {
-            echo "<script>alert('Error al subir la imagen');</script>";
-            header('Location: index.php?controller=Admin&action=editProduct');
-        }
         $product->setStock($_POST['stock']);
-        $product->setIdCategoria($_POST['id_categoria']);
+        $product->setIdCategoria($_POST['categorias']);
         $product->setId($_POST['id']);
-        $product->editProduct();
+        try {
+            $tmp_nom=$_FILES ["fotoP"]['tmp_name'];
+            $product->setFoto(file_get_contents($tmp_nom));
+            $aux=True;
+        } catch (Throwable $th) {
+            $aux=False;
+        }
+        if($aux){
+            $product->editProduct();
+        }else{
+            $product->editProductNoFoto();
+        }
         header('Location: index.php?controller=Admin&action=menuAdmin');
     }
 
@@ -93,7 +91,6 @@ class ProductController
 
     public function postConditionProduct()
     {
-        require_once "models/product.php";
         $product = new Product();
         $productid = $product->getProductById($_GET['id']);
         if ($productid->estado == '0') {
@@ -106,7 +103,6 @@ class ProductController
     }
 
     public function postFormSearchProduct(){
-        require_once "models/product.php";
         $product = new Product();
         $product->setNombre($_POST['busqueda']);
         $productList = $product->searchProduct();
