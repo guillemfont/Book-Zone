@@ -1,6 +1,7 @@
 <?php 
 
 echo '
+<div class=formBox>
 <form action="index.php?controller=Admin&action=loginAuth" method="POST" id="form" class="form">
     <p class="formError" id="formError">Acceso inválido. Inténtelo otra vez.</p>
     <h2 class="formTitle">Inicio administrador</h2>
@@ -20,7 +21,8 @@ echo '
 
 <input type="submit" value="Acceder" class="formSumbit">
 </div>
-</form>';
+</form>
+<div>';
 
 
 

@@ -1,5 +1,7 @@
 <?php
-echo '<form action="index.php?controller=Client&action=singInClient" method="POST" id="form" class="formReg">
+echo '
+<div class=formBox>    
+<form action="index.php?controller=Client&action=singInClient" method="POST" id="form" class="formReg">
     <p class="formError" id="formError">Las contraseñas no coinciden.</p>
     <h2 class="formTitle">Registro de Usuario</h2>
    
@@ -55,5 +57,6 @@ echo '<form action="index.php?controller=Client&action=singInClient" method="POS
    
    
    
-    </form>';
+    </form>
+    </div>';
 ?>

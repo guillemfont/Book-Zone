@@ -1,10 +1,11 @@
 <?php 
 
 echo '
-<form action="index.php?controller=Client&action=loginAuth" method="POST" id="form" class="form">
+<div class=formBox>
+<form action="index.php?controller=client&action=loginAuth" method="POST" id="form" class="form">
     <p class="formError" id="formError">Acceso inválido. Inténtelo otra vez.</p>
     <h2 class="formTitle">Iniciar sesión</h2>
-    <p class="formParagraph">¿Aún no tienes cuenta? <a href="index.php?controller=Client&action=registerClient" class="formLink">Entra aquí</a></p>
+    <p class="formParagraph">¿Aún no tienes cuenta? <a href="index.php?controller=client&action=registerClient" class="formLink">Entra aquí</a></p>
     
     <div class="formContainer">
     <div class="formGroup">
@@ -20,7 +21,8 @@ echo '
 
 <input type="submit" value="Acceder" class="formSumbit">
 </div>
-</form>';
+</form>
+</div>';
 
 
 

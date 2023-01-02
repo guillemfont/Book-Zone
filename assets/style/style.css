@@ -27,6 +27,10 @@ body {
 .mainMenu {
   display: flex;
 }
+
+.formBox {
+  padding-top: 50px;
+}
  
 .form {
   background-color: #fff;
@@ -588,41 +592,82 @@ body {
   cursor: not-allowed;
 }
 
-
-/* HE COMENTADO TODO ESTO PORQUE NO ES BUENO USAR SELECTORES DIRECTAMENTE DEL HTML, USA CLASES EN VEZ DE "FOOTER" */
-/* div.contenedor-product {
-  margin: 0 25px;
-  width: 25%;
-  border-radius: 20px;
-  border-width: 6px;
-  border-style: outset;
-  align-items: center;
-  text-align: center;
+/* Pie de pàgina  */
+.footerBox {
+  margin-top: 50px;
+  width: 100%;
 }
 
-/* Footer */
-/* footer {
-  position:absolute;
-  bottom:0;
+.footerSocial {
+  width: 100%;
+  font-size: 1.7em;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 
-  width:100%;
-  height: 20px;
+.socialBox {
+  margin-top: 10px;
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 
-  text-align: center;
-  letter-spacing: .1px;
-  font-family: 'Cagliostro', sans-serif;
-  font-size: .8em;
-  background: #CCCCFF;
-  color: darkblue;
-  padding:3px 0px 0px 0px;
-  margin: 0px;
+.socialIcon i {
+  text-decoration: none;
+  color: rgb(4, 25, 37);
+  font-size: 55px;
+  margin: 0 25px;
+}
 
-  background-image: url("../imatges/angel.png");
-  background-size: 4%;
-  background-position: center right;
-  background-repeat: no-repeat;
-} */ 
+.footerListBox {
+  margin-top: 40px;
+  background-color: #2b3240;
+  display: flex;
+  justify-content: space-evenly;
+  height: 300px;
+  padding: 60px 0;
+}
 
+.footerPar {
+  color: #fff;
+  font-size: 1.5em;
+}
+
+.footerLine {
+  margin: 5px 0;
+  color: #5f61c7;
+  height: 2px;
+}
+
+.footerList {
+  list-style: none;
+}
+
+.footerList li {
+  margin: 10px 0;
+}
+
+.footerList i {
+  color: #c6c6c6;
+  margin-right: 10px;
+}
+
+.footerList a {
+  text-decoration: none;
+  color: #9e9e9e;
+  font-size: 1.1em;
+}
+
+.footerRights {
+  background-color: rgb(4, 25, 37);
+  color: #fff;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 
 /* ETIQUETAS MEDIA PARA DISEÑO RESPONSIVE  */

@@ -7,31 +7,21 @@ class CategoryController
         require_once 'models/category.php';
         $categoryList = (new Category())->getCategoryList();
 
-        require_once 'views/admin/tableCategory.php';
-
+        require_once('views/admin/tableCategory.php');
     }
 
     public function addTableCategory()
     {
         require_once 'views/admin/addCategory.php';
-
     }
 
     public function postFormAddCategory()
     {
         require_once 'models/category.php';
         $category = new Category();
-        $category->setIdCategoria($_POST['id_categoria']);
         $category->setNombre($_POST['nombre']);
         $category->addCategory();
         header('Location: index.php?controller=Admin&action=viewTableCategory');
-    }
-
-    public function postAddCategory() {
-        $this->checkAdmin();
-        require_once 'categoryController.php';
-        $productController = new ProductController();
-        $productController->postFormAddCategory();
     }
 
     public function editTableCategory()
@@ -82,12 +72,12 @@ class CategoryController
     }
 
 
-    public function postFormSearchCategory(){
+    public function postFormSearchCategory()
+    {
         require_once "models/category.php";
         $category = new Category();
         $category->setNombre($_POST['busqueda']);
         $categoryList = $category->searchCategory();
         require_once "views/admin/tableCategory.php";
     }
-
 }

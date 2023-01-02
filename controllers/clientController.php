@@ -6,7 +6,7 @@ class ClientController
     private function checkClient(): void
     {
         if (!isset($_SESSION['client'])) {
-            header('Location: index.php?log=true&controller=Client&action=loginClient');
+            header('Location: index.php?log=true&controller=client&action=loginClient');
         }
     }
 
@@ -18,7 +18,7 @@ class ClientController
     public function loginAuth()
     {
         if (!isset($_POST['client']) || !isset($_POST['password'])) {
-            header('Location: index.php?log=true&controller=Client&action=loginClient');
+            header('Location: index.php?log=true&controller=client&action=loginClient');
         }
 
         $client = new Client();
@@ -28,9 +28,9 @@ class ClientController
 
         if ($login) {
             $_SESSION['client'] = $login;
-            header('Location: index.php?controller=Client&action=menuClient');
+            header('Location: index.php?controller=client&action=menuClient');
         } else {
-            header('Location: index.php?log=false&controller=Client&action=loginClient');
+            header('Location: index.php?log=false&controller=client&action=loginClient');
         }
     }
 
@@ -64,7 +64,7 @@ class ClientController
             $client = new Client($email, $userName, $lastName, $userDiretion, $userNumber, $userDNI, $password);
             $singIn = $client->userSingIn();
         } else {
-            header('Location: index.php?log=true&controller=Client&action=loginClient');
+            header('Location: index.php?log=true&controller=client&action=loginClient');
         }
     }
 

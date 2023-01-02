@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>Book Zone</title>
     <link rel="stylesheet" href="assets/style/style.css">
+    <link rel="shortcut icon" href="assets/img/img_general/logo.png" />
     <script src="assets/script/main.js"></script>
     <script src="https://kit.fontawesome.com/ebca16e450.js" crossorigin="anonymous"></script>
 </head>

@@ -38,10 +38,10 @@ echo '<header class="menu">
     if (!isset($_SESSION['client'])){
 
      echo '   <li class="menuItem">
-        <a href="index.php?log=true&controller=Client&action=loginClient" class="menuLink"><p>Acceder</p></i></a>
+        <a href="index.php?log=true&controller=client&action=loginClient" class="menuLink"><p>Acceder</p></i></a>
         </li>
         <li class="menuItem">
-        <a href="index.php?controller=Client&action=registerClient" class="menuLink"><div class="menuLinkContainer"><p>Registrarse</p></div></a>';
+        <a href="index.php?controller=client&action=registerClient" class="menuLink"><div class="menuLinkContainer"><p>Registrarse</p></div></a>';
     } else {
         echo '
 
@@ -58,7 +58,7 @@ echo '<header class="menu">
             <a href="#" class="menuLinkInside"><div class="menuInsideIcons"><i class="fa-solid fa-gear"></i></div></a>
         </li>
         <li class="menuInside">
-            <a href="index.php?log=true&controller=Client&action=closeClient" class="menuLinkInside"><div class="menuInsideIcons"><i class="fa-solid fa-right-from-bracket"></div></i></a>
+            <a href="index.php?log=true&controller=client&action=closeClient" class="menuLinkInside"><div class="menuInsideIcons"><i class="fa-solid fa-right-from-bracket"></div></i></a>
         </li>
     </ul>
 </li>
@@ -91,7 +91,7 @@ echo '<header class="menu">
                 <button class="cartModalButton">Comprar</button>';
                 } else {
                     ?>
-                    <p><a class="cartLink" href="index.php?log=true&controller=Client&action=loginClient">Inicia sessión</a> para usar la cesta de la compra.</p>
+                    <p><a class="cartLink" href="index.php?log=true&controller=client&action=loginClient">Inicia sesión</a> para usar la cesta de la compra.</p>
                     <?php
                 }
                 echo '
