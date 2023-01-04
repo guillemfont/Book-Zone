@@ -37,11 +37,15 @@
                     <i class="fa-solid fa-plus detailsInputPlus" id="detailsInputPlus<?php echo ($product->id);?>"></i>
                 </div>
                 <?php
+                if (isset($_SESSION['client'])){
                     if($product->stock > 0){
-                      echo '<button class="detailsButton'.$product->id.' detailsButton"><i class="fa-solid fa-cart-shopping"></i> Añadir a la cesta</button>';
+                        echo '<button class="detailsButton'.$product->id.' detailsButton"><i class="fa-solid fa-cart-shopping"></i> Añadir a la cesta</button>';
                     }else {
                         echo '<button class="detailsButtonDisabled">No hay unidades</button>';
                     }
+                } else {
+                    echo '<button class="detailsButtonDisabled"><a class="cartLink" href="index.php?log=true&controller=client&action=loginClient">Inicia sesión</a> para comprar</button>';
+                }
                 ?>
             </div>
         </article>

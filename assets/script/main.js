@@ -91,14 +91,16 @@ function responsiveMenu() {
       userInput.value = userInputNumber;
     });
 
-    sendButton.addEventListener("click", () => {
-      if(userInput.value > 0){
+    if (sendButton) {
+      sendButton.addEventListener("click", () => {
+        if(userInput.value > 0){
           window.location.href = `index.php?product=${id}&number=${userInput.value}&controller=Cart&action=addToCart`;
-      } else {
-        modal.classList.toggle("modalNoProductDisplay");
-      }
+        } else {
+          modal.classList.toggle("modalNoProductDisplay");
+        }
         
-    })
+      })
+    }
 
     closeButton.addEventListener("click", () => {
       modal.classList.remove("modalNoProductDisplay");

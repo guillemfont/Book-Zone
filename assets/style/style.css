@@ -380,6 +380,11 @@ body {
   border-radius: 0.5em;
   font-family: "Roboto", sans-serif;
 }
+
+.formSumbit:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
  
 .formReg .formSumbit {
   width: 100%;
