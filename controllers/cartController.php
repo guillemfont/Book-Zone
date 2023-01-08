@@ -25,6 +25,12 @@ class CartController {
         }
         
     }
+
+    public function getCart(){
+        $client = $_SESSION["client"];
+        $cart = new Cart($client);
+        return $cart->getFullCart();
+    }
     
         
     }

@@ -81,14 +81,20 @@ echo '<header class="menu">
             <div class="cartModalCheckoutContainer">
                 <div class="cartModalDetailsContainer">';
                 if(isset($_SESSION['client'])){
-                 echo '<img src="assets/img/img_books/book1.jpg" class="cartModalImg">
-                    <div>
-                    <p class="cartModalProduct">Nombre del libro</p>
-                    <p class="cartModalPrice">24,99€ x 1 <span class="cartModalPriceBold">24,99€</span></p>
+                    require_once "controllers/cartController.php";
+                    $cart = new CartController;
+                    $carrito = $cart->getCart();
+                foreach ($carrito as $cart):
+
+                     echo '<img src="'.$cart->id_producto.'" class="cartModalImg">
+                        <div>
+                        <p class="cartModalProduct">'.$cart->id_producto.'</p>
+                        <p class="cartModalPrice">'.$cart->id_producto.' x '.$cart->unidades.' <span class="cartModalPriceBold">'.$cart->id_producto.'</span></p>
+                        </div>
+                        <i class="fa-solid fa-trash-can" id="cartModalDelete"></i>
                     </div>
-                    <i class="fa-solid fa-trash-can" id="cartModalDelete"></i>
-                </div>
-                <button class="cartModalButton">Comprar</button>';
+                    <button class="cartModalButton">Comprar</button>';
+                endforeach;
                 } else {
                     ?>
                     <p><a class="cartLink" href="index.php?log=true&controller=client&action=loginClient">Inicia sesión</a> para usar la cesta de la compra.</p>

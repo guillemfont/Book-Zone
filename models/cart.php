@@ -2,6 +2,7 @@
 require_once("database.php");
 class Cart extends Database
 {
+    private $pdo;
     private $emailCliente;
     private $idProducto;
     private $unidades;
@@ -38,6 +39,18 @@ class Cart extends Database
             echo 'si';
         } else {
             echo 'no';
+        }
+    }
+
+    public function getFullCart() {
+        $this->pdo = (new Database)->connect();
+
+        try {
+            $query = $this->pdo->prepare("SELECT * FROM `carrito` WHERE `email_cliente` = '{$this->getEmailCliente()}';");
+            $query->execute();
+            return $query->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
         }
     }
 
