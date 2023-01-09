@@ -66,7 +66,33 @@ class Cart extends Database
         }
     }
 
+    public function getProductImage($id) {
+        $this->pdo = (new Database)->connect();
+
+        try {
+            $query = $this->pdo->prepare("SELECT foto FROM `productos` WHERE `id` = '{$id}';");
+            $query->execute();
+            return $query->fetch(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function getProductPrice($id) {
+        $this->pdo = (new Database)->connect();
+
+        try {
+            $query = $this->pdo->prepare("SELECT precio FROM `productos` WHERE `id` = '{$id}';");
+            $query->execute();
+            return $query->fetch(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
 }
+
+
 
 
 

@@ -78,26 +78,37 @@ echo '<header class="menu">
             
         <div class="cartModal">
             <p class="cartModalTitle">Cesta</p>
-            <div class="cartModalCheckoutContainer">
-                <div class="cartModalDetailsContainer">';
+            <div class="cartModalCheckoutContainer">';
                 if(isset($_SESSION['client'])){
                     require_once "controllers/cartController.php";
                     $cartObj = new CartController;
                     $carrito = $cartObj->getCart();
     foreach ($carrito as $cart):
 
+        echo '<div class="cartModalDetailsContainer">
+        <img src="data:image/jpg;base64,';
+        echo base64_encode($cartObj->getImage($cart->id_producto)->foto);
+        echo '" class="cartModalImg">';
         echo '<div>
                         <p class="cartModalProduct">';
-        print_r($cartObj->getProduct($cart->id_producto)->nombre);
+        echo ($cartObj->getProduct($cart->id_producto)->nombre);
         echo '</p>
-                        <p class="cartModalPrice">'.$cart->id_producto.' x '.$cart->unidades.' <span class="cartModalPriceBold">'.$cart->id_producto.'</span></p>
+                        <p class="cartModalPrice">'.$cartObj->getPrice($cart->id_producto)->precio.'€ x '.$cart->unidades.' <span class="cartModalPriceBold">'.($cartObj->getPrice($cart->id_producto)->precio)*$cart->unidades.'€</span></p>
                         </div>
+                        <div id="'.$cart->id_producto.'"></div>
                         <i class="fa-solid fa-trash-can" id="cartModalDelete"></i>
-                    </div>
-                    <button class="cartModalButton">Comprar</button>';
+                    </div>';
                 endforeach;
-                } else {
-                    ?>
+                ?>
+    <button class="cartModalButton">Comprar</button>
+
+    <!-- PARA ONETTI (LUEGO ELIMINA EL COMENTARIO):
+    a href="index.php?log=true&controller=*compra*&action=*hacerCompra($cart-?id_producto, $cart-?unidades, $_SESSION['client'])*"> -->
+              
+              <?php
+
+            } else {
+                ?>
                     <p><a class="cartLink" href="index.php?log=true&controller=client&action=loginClient">Inicia sesión</a> para usar la cesta de la compra.</p>
                     <?php
                 }

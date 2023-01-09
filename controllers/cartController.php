@@ -36,6 +36,16 @@ class CartController {
         $cart = new Cart();
         return $cart->getProductName($id);
     }
+
+    public function getImage($id){
+        $cart = new Cart();
+        return $cart->getProductImage($id);
+    }
+
+    public function getPrice($id){
+        $cart = new Cart();
+        return $cart->getProductPrice($id);
+    }
     
         
     }
