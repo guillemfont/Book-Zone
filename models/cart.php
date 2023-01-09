@@ -54,6 +54,18 @@ class Cart extends Database
         }
     }
 
+    public function getProductName($id) {
+        $this->pdo = (new Database)->connect();
+
+        try {
+            $query = $this->pdo->prepare("SELECT nombre FROM `productos` WHERE `id` = '{$id}';");
+            $query->execute();
+            return $query->fetch(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
 }
 
 

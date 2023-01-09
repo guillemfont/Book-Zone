@@ -82,13 +82,14 @@ echo '<header class="menu">
                 <div class="cartModalDetailsContainer">';
                 if(isset($_SESSION['client'])){
                     require_once "controllers/cartController.php";
-                    $cart = new CartController;
-                    $carrito = $cart->getCart();
-                foreach ($carrito as $cart):
+                    $cartObj = new CartController;
+                    $carrito = $cartObj->getCart();
+    foreach ($carrito as $cart):
 
-                     echo '<img src="'.$cart->id_producto.'" class="cartModalImg">
-                        <div>
-                        <p class="cartModalProduct">'.$cart->id_producto.'</p>
+        echo '<div>
+                        <p class="cartModalProduct">';
+        print_r($cartObj->getProduct($cart->id_producto)->nombre);
+        echo '</p>
                         <p class="cartModalPrice">'.$cart->id_producto.' x '.$cart->unidades.' <span class="cartModalPriceBold">'.$cart->id_producto.'</span></p>
                         </div>
                         <i class="fa-solid fa-trash-can" id="cartModalDelete"></i>

@@ -31,6 +31,11 @@ class CartController {
         $cart = new Cart($client);
         return $cart->getFullCart();
     }
+
+    public function getProduct($id){
+        $cart = new Cart();
+        return $cart->getProductName($id);
+    }
     
         
     }
