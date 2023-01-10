@@ -49,16 +49,13 @@ echo '<header class="menu">
         <a href="#" class="menuLink"><i class="fa-solid fa-circle-user" id="userIcon"></i></a>
         <ul class="menuNesting">
         <li class="menuInside">
-            <a href="#" class="menuLinkInside"><div class="menuInsideIcons"><i class="fa-solid fa-user"></i></div></a>
+            <a href="index.php?controller=client&action=menuClient" class="menuLinkInside"><div class="menuInsideIcons"><i class="fa-solid fa-user"></i></div></a>
         </li>
         <li class="menuInside">
-            <a href="#" class="menuLinkInside"><div class="menuInsideIcons"><i class="fa-solid fa-bell"></i></div></a>
+            <a href="index.php?controller=client&action=showModifyClient" class="menuLinkInside"><div class="menuInsideIcons"><i class="fa-solid fa-gear"></i></div></a>
         </li>
         <li class="menuInside">
-            <a href="#" class="menuLinkInside"><div class="menuInsideIcons"><i class="fa-solid fa-gear"></i></div></a>
-        </li>
-        <li class="menuInside">
-            <a href="index.php?log=true&controller=client&action=closeClient" class="menuLinkInside"><div class="menuInsideIcons"><i class="fa-solid fa-right-from-bracket"></div></i></a>
+            <a href="index.php?&controller=client&action=closeClient" class="menuLinkInside"><div class="menuInsideIcons"><i class="fa-solid fa-right-from-bracket"></div></i></a>
         </li>
     </ul>
 </li>

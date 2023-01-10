@@ -28,7 +28,7 @@ class ClientController
 
         if ($login) {
             $_SESSION['client'] = $login;
-            header('Location: index.php?controller=client&action=menuClient');
+            header('Location: index.php');
         } else {
             header('Location: index.php?log=false&controller=client&action=loginClient');
         }
@@ -37,12 +37,14 @@ class ClientController
     public function menuClient()
     {
         $this->checkClient();
+        $client = new Client();
+        $clientName = $client->getFullName($_SESSION['client']);
         require_once 'views/client/menuClient.php';
     }
 
     public function closeClient() {
         unset($_SESSION['client']);
-        header('Location: index.php');
+        header('Location:index.php');
     }
 
     public function registerClient()
@@ -80,5 +82,35 @@ class ClientController
 
     public function viewTableProduct()
     {
+    }
+
+    public function showModifyClient()
+    {
+        $this->checkClient();
+        $client = new Client();
+        $cliente = $client->getAllData($_SESSION['client']);
+        require_once 'views/client/modifyClient.php';
+    }
+
+    public function modifyClient()
+    {
+        if (isset($_POST['userDNI'])) {
+            $email = $_POST['userMail'];
+            $userName = $_POST['userName'];
+            $lastName = $_POST['userLastName'];
+            $userDiretion = $_POST['userDiretion'];
+            $userNumber = $_POST['formNumber'];
+            $userDNI = $_POST['userDNI'];
+
+            $id = $_SESSION['id'];
+
+            $client = new Client($email, $userName, $lastName, $userDiretion, $userNumber, $userDNI);
+            if($client->modifyUser($id)){
+                header('Location: index.php');
+                unset($_SESSION['id']);
+            }
+        } else {
+            header('Location: index.php?log=true&controller=client&action=loginClient');
+        }
     }
 }

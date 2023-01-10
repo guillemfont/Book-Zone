@@ -1,6 +1,8 @@
 <?php
 require_once("database.php");
 class Client extends Database {
+
+    private $pdo;
     private $email;
     private $userName;
     private $userLastName;
@@ -115,4 +117,54 @@ class Client extends Database {
         }
         
     }
+
+    public function getFullName($email)
+    {
+        $this->pdo = (new Database)->connect();
+
+        try {
+            $query1 = $this->pdo->prepare("SELECT nombre FROM clientes WHERE email = '{$email}';");
+            $query2 = $this->pdo->prepare("SELECT apellidos FROM clientes WHERE email = '{$email}';");
+            $query1->execute();
+            $query2->execute();
+            $nombre = $query1->fetch(PDO::FETCH_OBJ);
+            $apellidos = $query2->fetch(PDO::FETCH_OBJ);
+            return $nombre->nombre . " " . $apellidos->apellidos;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function getAllData($email)
+    {
+        $this->pdo = (new Database)->connect();
+
+        try {
+            $query = $this->pdo->prepare("SELECT * FROM clientes WHERE email = '{$email}';");
+            $query->execute();
+            return $query->fetch(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function modifyUser($id)
+    {
+        $sql = "UPDATE clientes (email, nombre, apellidos, calle, numero, dni";
+
+
+        $sql = "UPDATE clientes SET email='{$this->getEmail()}', nombre='{$this->getUserName()}', apellidos='{$this->getUserLastName()}', calle='{$this->getUserDirection()}', numero='{$this->getUserNumber()}', dni='{$this->getUserDNI()}' WHERE id = '{$id}';";
+        $conn = new Database();
+        $db = $conn->connect();
+        if($db->query($sql)){
+            echo 'si';
+        } else {
+            echo 'no';
+        }
+    }
 }
+
+
+
+
+       
