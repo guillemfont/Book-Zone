@@ -1,52 +1,66 @@
 <?php
 require_once "models/cart.php";
 
-class CartController {
-    
-        
-    public function addToCart(){
+class CartController
+{
 
-        if(isset($_GET["product"])){
 
+    public function addToCart()
+    {
+
+        if (isset($_GET["product"])) {
             $client = $_SESSION["client"];
             $product = $_GET["product"];
             $number = $_GET["number"];
-
             $cart = new Cart($client, $product, $number);
-
             $cart->saveToCart();
-            // echo $product;
-
-
-
-
         } else {
             header('Location: index.php');
         }
-        
+
     }
 
-    public function getCart(){
+    public function deleteAnCart()
+    {
+        if (isset($_GET["product"])) {
+
+            $client = $_SESSION["client"];
+            $product = $_GET["product"];
+
+            $cart = new Cart($client, $product, 0);
+
+            $cart->deleteCart();
+            // echo $product;
+        } else {
+            header('Location: index.php');
+        }
+    }
+
+    public function getCart()
+    {
         $client = $_SESSION["client"];
         $cart = new Cart($client);
         return $cart->getFullCart();
     }
 
-    public function getProduct($id){
+    public function getProduct($id)
+    {
         $cart = new Cart();
         return $cart->getProductName($id);
     }
 
-    public function getImage($id){
+    public function getImage($id)
+    {
         $cart = new Cart();
         return $cart->getProductImage($id);
     }
 
-    public function getPrice($id){
+    public function getPrice($id)
+    {
         $cart = new Cart();
         return $cart->getProductPrice($id);
     }
-    
-        
-    }
+
+
+}
 ?>

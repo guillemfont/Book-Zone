@@ -1,6 +1,6 @@
 <?php
 require_once("database.php");
-class Cart extends Database
+class Cart
 {
     private $pdo;
     private $emailCliente;
@@ -13,38 +13,40 @@ class Cart extends Database
         $this->emailCliente = $email;
         $this->idProducto = $product;
         $this->unidades = $unity;
+        $this->pdo = (new Database)->connect();
     }
 
     // Getters & Setters
     // ...
-    public function getEmailCliente(){
+    public function getEmailCliente()
+    {
         return $this->emailCliente;
     }
 
-    public function getIdProducto(){
+    public function getIdProducto()
+    {
         return $this->idProducto;
     }
 
-    public function getUnidades(){
+    public function getUnidades()
+    {
         return $this->unidades;
     }
 
 
     // Métodos
-    public function saveToCart(){
+    public function saveToCart()
+    {
         $sql = "INSERT INTO `carrito` (`id_carrito`, `email_cliente`, `id_producto`, `unidades`) VALUES (NULL, '{$this->getEmailCliente()}', '{$this->getIdProducto()}', '{$this->getUnidades()}');";
-        $conn = new Database();
-        $db = $conn->connect();
-        if($db->query($sql)){
-            echo 'si';
+        if ($this->pdo->query($sql)) {
+            echo 'añadido';
         } else {
-            echo 'no';
+            echo 'error al añadir';
         }
     }
 
-    public function getFullCart() {
-        $this->pdo = (new Database)->connect();
-
+    public function getFullCart()
+    {
         try {
             $query = $this->pdo->prepare("SELECT * FROM `carrito` WHERE `email_cliente` = '{$this->getEmailCliente()}';");
             $query->execute();
@@ -54,7 +56,8 @@ class Cart extends Database
         }
     }
 
-    public function getProductName($id) {
+    public function getProductName($id)
+    {
         $this->pdo = (new Database)->connect();
 
         try {
@@ -66,7 +69,8 @@ class Cart extends Database
         }
     }
 
-    public function getProductImage($id) {
+    public function getProductImage($id)
+    {
         $this->pdo = (new Database)->connect();
 
         try {
@@ -78,7 +82,30 @@ class Cart extends Database
         }
     }
 
-    public function getProductPrice($id) {
+    public function deleteCart()
+    {
+        try {
+            $query = $this->pdo->prepare("DELETE FROM carrito WHERE id_producto={$this->idProducto} AND email_cliente =\"{$this->emailCliente}\"");
+            $query->execute();
+            echo 'eliminado';
+        } catch (Exception $e) {
+            echo 'error al borrar';
+            die($e->getMessage());
+        }
+    }
+
+    public function deleteAllCart($emailCliente)
+    {
+        try {
+            $query = $this->pdo->prepare("DELETE FROM carrito WHERE email_cliente =\"{$emailCliente}\"");
+            $query->execute();
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function getProductPrice($id)
+    {
         $this->pdo = (new Database)->connect();
 
         try {

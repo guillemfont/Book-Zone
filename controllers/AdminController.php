@@ -40,7 +40,6 @@ class AdminController
         $productController->viewTableProduct();
     }
 
-    //TODO: el id tiene que ser incementable, no lo pedimos con un input
     public function addProduct() {
         $this->checkAdmin();
         require_once 'productController.php';
@@ -107,6 +106,14 @@ class AdminController
         require_once "models/category.php";
         $productController = new CategoryController();
         $productController->viewTableCategory();
+    }
+
+    public function viewTableOrders()
+    {
+        $this->checkAdmin();
+        require_once "orderController.php";
+        $productController = new OrderController();
+        $productController->viewTableOrders();
     }
 
     public function addCategory() {
