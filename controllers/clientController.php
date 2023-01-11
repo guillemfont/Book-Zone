@@ -44,7 +44,7 @@ class ClientController
 
     public function closeClient() {
         unset($_SESSION['client']);
-        header('Location:index.php');
+        echo '<script>window.location.replace("index.php")</script>';
     }
 
     public function registerClient()

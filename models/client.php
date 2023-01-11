@@ -157,7 +157,7 @@ class Client extends Database {
         $conn = new Database();
         $db = $conn->connect();
         if($db->query($sql)){
-            echo 'si';
+            echo '<script>window.location.replace("index.php")</script>';
         } else {
             echo 'no';
         }
