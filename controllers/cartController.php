@@ -14,6 +14,7 @@ class CartController
             $number = $_GET["number"];
             $cart = new Cart($client, $product, $number);
             $cart->saveToCart();
+            echo '<script>window.location.replace("index.php")</script>';
         } else {
             header('Location: index.php');
         }

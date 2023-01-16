@@ -111,6 +111,7 @@ class ClientController
                 header('Location: index.php');
                 unset($_SESSION['id']);
             }
+            header('Location: index.php');
         } else {
             header('Location: index.php?log=true&controller=client&action=loginClient');
         }

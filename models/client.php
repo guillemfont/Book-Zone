@@ -147,10 +147,6 @@ class Client
     {
         $sql = "UPDATE clientes (email, nombre, apellidos, calle, numero, dni";
         $sql = "UPDATE clientes SET email='{$this->getEmail()}', nombre='{$this->getUserName()}', apellidos='{$this->getUserLastName()}', calle='{$this->getUserDirection()}', numero='{$this->getUserNumber()}', dni='{$this->getUserDNI()}' WHERE id = '{$id}';";
-        if ($this->pdo->query($sql)) {
-            echo 'si';
-        } else {
-            echo 'no';
-        }
+        $this->pdo->query($sql);
     }
 }

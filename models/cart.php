@@ -38,11 +38,7 @@ class Cart
     public function saveToCart()
     {
         $sql = "INSERT INTO `carrito` (`id_carrito`, `email_cliente`, `id_producto`, `unidades`) VALUES (NULL, '{$this->getEmailCliente()}', '{$this->getIdProducto()}', '{$this->getUnidades()}');";
-        if ($this->pdo->query($sql)) {
-            echo 'añadido';
-        } else {
-            echo 'error al añadir';
-        }
+        $this->pdo->query($sql);
     }
 
     public function getFullCart()
