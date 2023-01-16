@@ -8,7 +8,6 @@ Guillem Font y Albert Onetti.
 # TODO:
 
 Importante:
-    - Seleccionar las categorías de la cabezera desde la BBDD (PHP -> views/general/header.php).
     - Agregar funcionalidad a la papelera del carrito (PHP -> views/general/header.php & JS -> assets/script/main.js).
     - Cojer de la BDDD los pedidos históricos del usuario (PHP -> models/client.php {método getAllData}).
     - Arreglar error "buyButton is null" cuando el usuario no ha iniciado sesión, ya que no existe (JS -> assets/script/main.js).
