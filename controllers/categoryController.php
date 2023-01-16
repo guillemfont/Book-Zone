@@ -77,4 +77,9 @@ class CategoryController
         $categoryList = $category->searchCategory();
         require_once "views/admin/tableCategory.php";
     }
+
+    public function getAllCategories(){
+        $categoryList = (new Category())->getFullCategories();
+        return $categoryList;
+    }
 }

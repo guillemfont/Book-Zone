@@ -11,24 +11,20 @@ echo '<header class="menu">
             <li class="menuItem menuItemShow">
             <a href="#" class="menuLink"><p>Categorías</p><i class="fa-solid fa-angle-up" id="menuArrow"></i></a>
             <ul class="menuNesting">
-            <li class="menuInside">
-                    <a href="#" class="menuLinkInside">Novela</a>
-                    </li>
-                    <li class="menuInside">
-                    <a href="#" class="menuLinkInside">Ficción</a>
-                </li>
+            <li class="menuItem">';
+            require_once "controllers/categoryController.php";
+            $cat = new CategoryController;
+            $categories = $cat->getAllCategories();
+            foreach ($categories as $ca):
+                
+                echo '
                 <li class="menuInside">
-                <a href="#" class="menuLinkInside">Comedia</a>
-                </li>
-                <li class="menuInside">
-                    <a href="#" class="menuLinkInside">Terror</a>
-                </li>
-                <li class="menuInside">
-                <a href="#" class="menuLinkInside">Fantasía</a>
-                </li>
-                </ul>
-                </li>
-                <li class="menuItem">
+                <a href="#" class="menuLinkInside">'.$ca->nombre.'</a>
+                </li>';
+            endforeach;
+            echo '
+            </ul>
+            </li>
                     <a href="index.php" class="menuLink">Ofertas</a>
                 </li>
                 <li class="menuItem">

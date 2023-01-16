@@ -1,4 +1,6 @@
 <?php
+require_once("database.php");
+
 class Category
 {
     private $pdo;
@@ -113,6 +115,17 @@ class Category
             $query = $this->pdo->prepare("UPDATE categoria SET estado=? WHERE id_categoria=?;");
             $query->execute(array($estado, $id));
             $this->estado = $estado;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
+    public function getFullCategories()
+    {
+        try {
+            $query = $this->pdo->prepare("SELECT nombre FROM `categoria`;");
+            $query->execute();
+            return $query->fetchAll(PDO::FETCH_OBJ);
         } catch (Exception $e) {
             die($e->getMessage());
         }
