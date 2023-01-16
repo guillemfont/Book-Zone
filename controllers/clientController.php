@@ -1,7 +1,7 @@
 <?php
 require_once "models/client.php";
 
-class ClientController 
+class ClientController
 {
     private function checkClient(): void
     {
@@ -42,9 +42,10 @@ class ClientController
         require_once 'views/client/menuClient.php';
     }
 
-    public function closeClient() {
+    public function closeClient()
+    {
         unset($_SESSION['client']);
-        echo '<script>window.location.replace("index.php")</script>';
+        header('Location:index.php');
     }
 
     public function registerClient()
@@ -64,20 +65,21 @@ class ClientController
             $password = $_POST['userPass'];
 
             $client = new Client($email, $userName, $lastName, $userDiretion, $userNumber, $userDNI, $password);
-            $singIn = $client->userSingIn();
+            $client->userSingIn();
         } else {
             header('Location: index.php?log=true&controller=client&action=loginClient');
         }
     }
 
 
-    public function showMain(){
+    public function showMain()
+    {
         require_once "models/product.php";
         require_once 'productController.php';
         $productController = new ProductController();
         $productList = (new Product())->getProductList();
         require_once "views/general/menu.php";
-     }
+    }
 
 
     public function viewTableProduct()
@@ -105,7 +107,7 @@ class ClientController
             $id = $_SESSION['id'];
 
             $client = new Client($email, $userName, $lastName, $userDiretion, $userNumber, $userDNI);
-            if($client->modifyUser($id)){
+            if ($client->modifyUser($id)) {
                 header('Location: index.php');
                 unset($_SESSION['id']);
             }

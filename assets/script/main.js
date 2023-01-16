@@ -69,55 +69,67 @@ function responsiveMenu() {
   }
 }
 
-  // Número de productos del ménu:
-  function anadirCarrito(id) {
-    const minusButton = document.querySelector("#detailsInputMinus"+id);
-    const plusButton = document.querySelector("#detailsInputPlus"+id);
-    let userInput = document.querySelector(".detailsInputNumber"+id);
-    let userInputNumber = 0;
-    const sendButton = document.querySelector(".detailsButton"+id);
-    const closeButton = document.querySelector(".modalNoProductsB");
-    let modal = document.querySelector(".modalNoProducts");
+// Número de productos del ménu:
+function anadirCarrito(id) {
+  const minusButton = document.querySelector("#detailsInputMinus" + id);
+  const plusButton = document.querySelector("#detailsInputPlus" + id);
+  let userInput = document.querySelector(".detailsInputNumber" + id);
+  let userInputNumber = 0;
+  const sendButton = document.querySelector(".detailsButton" + id);
+  const deleteButton = document.querySelector(".deleteButton" + id);
+  const closeButton = document.querySelector(".modalNoProductsB");
+  let modal = document.querySelector(".modalNoProducts");
+  const buyButton = document.querySelector(".cartModalButton");
 
-    plusButton.addEventListener("click", () => {
-      userInputNumber++;
-      userInput.value = userInputNumber;
-    });
+  buyButton.addEventListener("click", () => {
+    window.location.href = `index.php?controller=order&action=saveOrder`;
+  })
 
-    minusButton.addEventListener("click", () => {
-      if (userInputNumber > 0) {
-        userInputNumber--;
-      }
-      userInput.value = userInputNumber;
-    });
+  plusButton.addEventListener("click", () => {
+    userInputNumber++;
+    userInput.value = userInputNumber;
+  });
 
-    if (sendButton) {
-      sendButton.addEventListener("click", () => {
-        if(userInput.value > 0){
-          window.location.href = `index.php?product=${id}&number=${userInput.value}&controller=Cart&action=addToCart`;
-        } else {
-          modal.classList.toggle("modalNoProductDisplay");
-        }
-        
-      })
+  minusButton.addEventListener("click", () => {
+    if (userInputNumber > 0) {
+      userInputNumber--;
     }
+    userInput.value = userInputNumber;
+  });
 
-    closeButton.addEventListener("click", () => {
-      modal.classList.remove("modalNoProductDisplay");
+  if (sendButton) {
+    sendButton.addEventListener("click", () => {
+      if (userInput.value > 0) {
+        window.location.href = `index.php?product=${id}&number=${userInput.value}&controller=Cart&action=addToCart`;
+      } else {
+        modal.classList.toggle("modalNoProductDisplay");
+      }
+
     })
-
   }
 
-  // Desplegar/Ocultar más información sobre el producto:
-  function desplegarImagen(id) {
-    const galleryImg = document.querySelector(".galleryImageContainer"+id);
-    const modalInfo = document.querySelector(".modalMoreInfo"+id);
-    const mark = document.querySelector(".xmark"+id);
-
-    galleryImg.addEventListener("click", () => {
-      modalInfo.classList.toggle("modalMoreInfoDisplay");
-    });
-    mark.addEventListener("click", () => {
-      modalInfo.classList.toggle("modalMoreInfoDisplay");
-    });
+  if (deleteButton) {
+    deleteButton.addEventListener("click", () => {
+      window.location.href = `index.php?product=${id}&controller=Cart&action=deleteAnCart`;
+    })
   }
+
+  closeButton.addEventListener("click", () => {
+    modal.classList.remove("modalNoProductDisplay");
+  })
+
+}
+
+// Desplegar/Ocultar más información sobre el producto:
+function desplegarImagen(id) {
+  const galleryImg = document.querySelector(".galleryImageContainer" + id);
+  const modalInfo = document.querySelector(".modalMoreInfo" + id);
+  const mark = document.querySelector(".xmark" + id);
+
+  galleryImg.addEventListener("click", () => {
+    modalInfo.classList.toggle("modalMoreInfoDisplay");
+  });
+  mark.addEventListener("click", () => {
+    modalInfo.classList.toggle("modalMoreInfoDisplay");
+  });
+}

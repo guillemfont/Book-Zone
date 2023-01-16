@@ -10,7 +10,7 @@ echo '
             <th>Enviado</th>
             <th>Estado</th>
         </tr>';
-if("1" == 1){
+if ("1" == 1) {
 
     echo '<tr>
     <td>"Pedido"</td>
@@ -22,9 +22,9 @@ if("1" == 1){
 
 } else {
     ?>
-    
-    
-    <?php
+
+
+<?php
 
 
 

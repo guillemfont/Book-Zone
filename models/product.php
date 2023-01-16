@@ -11,6 +11,7 @@ class Product
     private $foto;
     private $stock;
     private $id_categoria;
+    private $elementos;
     private $estado = 0;
     private $autor;
 
@@ -76,15 +77,6 @@ class Product
 
     public function setFoto($foto): void
     {
-        // $flagOK = true;
-        // $target_dir = "assets/img/img_products";
-        // $ext = pathinfo($foto, PATHINFO_EXTENSION);
-        // $target_file = $target_dir . "/" . $filenameId . "." . $ext;
-        // if (!move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)) {
-        //     $flagOK = false;
-        // }
-        // $this->foto = $target_file;
-        // return $flagOK;
         $this->foto = $foto;
     }
 
@@ -149,12 +141,15 @@ class Product
         }
     }
 
-    public function getProductById($id)
+    public function getProductById()
     {
         try {
-            $query = $this->pdo->prepare("SELECT * FROM productos WHERE id=?;");
-            $query->execute(array($id));
-            return $query->fetch(PDO::FETCH_OBJ);
+            $consulta = "SELECT * FROM productos WHERE id = {$this->id}";
+            $resultado = $this->pdo->query($consulta);
+            while ($filas = $resultado->FETCHALL(PDO::FETCH_ASSOC)) {
+                $this->elementos[] = $filas;
+            }
+            return $this->elementos[0][0];
         } catch (Exception $e) {
             die($e->getMessage());
         }

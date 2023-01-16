@@ -4,14 +4,6 @@ require_once 'models/category.php';
 
 class ProductController
 {
-//    private $model;
-//    public function __construct(){
-//        $this->model = new Product();
-//    }
-//    public function Menu(){
-//        require_once "views/products/index.php";
-//
-//    }
     public function viewTableProduct()
     {
         $productList = (new Product())->getProductList();
@@ -32,8 +24,10 @@ class ProductController
             header('Location: index.php?controller=Admin&action=menuAdmin');
         }
 
-        $product = (new Product())->getProductById($_GET['id']);
-        
+        $aux = new Product();
+        $aux->setId($_GET['id']);
+        $product = $aux->getProductById();
+
         require_once 'models/category.php';
         $categoryList = (new Category())->getCategoryList();
         require_once "views/admin/editProduct.php";
@@ -47,7 +41,7 @@ class ProductController
         $product->setPrecio($_POST['precio']);
         $product->setAutor($_POST['autor']);
         try {
-            $tmp_nom=$_FILES ["fotoP"]['tmp_name'];
+            $tmp_nom = $_FILES["fotoP"]['tmp_name'];
         } catch (Throwable $th) {
             echo "<script>alert('Error al subir el archivo');</script>";
         }
@@ -70,15 +64,15 @@ class ProductController
         $product->setIdCategoria($_POST['categorias']);
         $product->setId($_POST['id']);
         try {
-            $tmp_nom=$_FILES ["fotoP"]['tmp_name'];
+            $tmp_nom = $_FILES["fotoP"]['tmp_name'];
             $product->setFoto(file_get_contents($tmp_nom));
-            $aux=True;
+            $aux = True;
         } catch (Throwable $th) {
-            $aux=False;
+            $aux = False;
         }
-        if($aux){
+        if ($aux) {
             $product->editProduct();
-        }else{
+        } else {
             $product->editProductNoFoto();
         }
         header('Location: index.php?controller=Admin&action=menuAdmin');
@@ -91,18 +85,21 @@ class ProductController
 
     public function postConditionProduct()
     {
-        $product = new Product();
-        $productid = $product->getProductById($_GET['id']);
-        if ($productid->estado == '0') {
-            $product->editConditionProduct($productid->id, 1);
+
+        $aux = new Product();
+        $aux->setId($_GET['id']);
+        $product = $aux->getProductById();
+        if ($product->estado == '0') {
+            $product->editConditionProduct($product->id, 1);
         } else {
-            $product->editConditionProduct($productid->id, 0);
+            $product->editConditionProduct($product->id, 0);
         }
 
         header('Location: index.php?controller=Admin&action=menuAdmin');
     }
 
-    public function postFormSearchProduct(){
+    public function postFormSearchProduct()
+    {
         $product = new Product();
         $product->setNombre($_POST['busqueda']);
         $productList = $product->searchProduct();
@@ -110,5 +107,3 @@ class ProductController
     }
 
 }
-
-

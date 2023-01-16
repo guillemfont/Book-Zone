@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 echo '<header class="menu">
     <nav class="menuContainer">
@@ -35,36 +35,36 @@ echo '<header class="menu">
                 <button class="menuLink" id="cartShopContainer"><i class="fa-solid fa-cart-shopping" id="cartShopButton"></i></button>
             </li>
         ';
-    if (!isset($_SESSION['client'])){
+if (!isset($_SESSION['client'])) {
 
-     echo '   <li class="menuItem">
+    echo '   <li class="menuItem">
         <a href="index.php?log=true&controller=client&action=loginClient" class="menuLink"><p>Acceder</p></i></a>
         </li>
         <li class="menuItem">
         <a href="index.php?controller=client&action=registerClient" class="menuLink"><div class="menuLinkContainer"><p>Registrarse</p></div></a>';
-    } else {
-        echo '
+} else {
+    echo '
 
-        <li class="menuItem menuItemShow">
-        <a href="#" class="menuLink"><i class="fa-solid fa-circle-user" id="userIcon"></i></a>
-        <ul class="menuNesting">
-        <li class="menuInside">
-            <a href="index.php?controller=client&action=menuClient" class="menuLinkInside"><div class="menuInsideIcons"><i class="fa-solid fa-user"></i></div></a>
-        </li>
-        <li class="menuInside">
-            <a href="index.php?controller=client&action=showModifyClient" class="menuLinkInside"><div class="menuInsideIcons"><i class="fa-solid fa-gear"></i></div></a>
-        </li>
-        <li class="menuInside">
-            <a href="index.php?&controller=client&action=closeClient" class="menuLinkInside"><div class="menuInsideIcons"><i class="fa-solid fa-right-from-bracket"></div></i></a>
+    <li class="menuItem menuItemShow">
+    <a href="#" class="menuLink"><i class="fa-solid fa-circle-user" id="userIcon"></i></a>
+    <ul class="menuNesting">
+    <li class="menuInside">
+        <a href="index.php?controller=client&action=menuClient" class="menuLinkInside"><div class="menuInsideIcons"><i class="fa-solid fa-user"></i></div></a>
+    </li>
+    <li class="menuInside">
+        <a href="index.php?controller=client&action=showModifyClient" class="menuLinkInside"><div class="menuInsideIcons"><i class="fa-solid fa-gear"></i></div></a>
+    </li>
+    <li class="menuInside">
+        <a href="index.php?&controller=client&action=closeClient" class="menuLinkInside"><div class="menuInsideIcons"><i class="fa-solid fa-right-from-bracket"></div></i></a>
         </li>
     </ul>
 </li>
 
         ';
-    }
-    
+}
 
-    echo '
+
+echo '
             </li>
             </ul>
             
@@ -76,10 +76,10 @@ echo '<header class="menu">
         <div class="cartModal">
             <p class="cartModalTitle">Cesta</p>
             <div class="cartModalCheckoutContainer">';
-                if(isset($_SESSION['client'])){
-                    require_once "controllers/cartController.php";
-                    $cartObj = new CartController;
-                    $carrito = $cartObj->getCart();
+if (isset($_SESSION['client'])) {
+    require_once "controllers/cartController.php";
+    $cartObj = new CartController;
+    $carrito = $cartObj->getCart();
     foreach ($carrito as $cart):
 
         echo '<div class="cartModalDetailsContainer">
@@ -90,26 +90,24 @@ echo '<header class="menu">
                         <p class="cartModalProduct">';
         echo ($cartObj->getProduct($cart->id_producto)->nombre);
         echo '</p>
-                        <p class="cartModalPrice">'.$cartObj->getPrice($cart->id_producto)->precio.'€ x '.$cart->unidades.' <span class="cartModalPriceBold">'.($cartObj->getPrice($cart->id_producto)->precio)*$cart->unidades.'€</span></p>
+                        <p class="cartModalPrice">' . $cartObj->getPrice($cart->id_producto)->precio . '€ x ' . $cart->unidades . ' <span class="cartModalPriceBold">' . ($cartObj->getPrice($cart->id_producto)->precio) * $cart->unidades . '€</span></p>
                         </div>
-                        <div id="'.$cart->id_producto.'"></div>
-                        <i class="fa-solid fa-trash-can" id="cartModalDelete"></i>
+                        <div id="' . $cart->id_producto . '"></div>
+                        <button class="deleteButton' . $cart->id_producto . ' deleteButton"><i class="fa-solid fa-trash-can" ></i></button>
                     </div>';
-                endforeach;
-                ?>
-    <button class="cartModalButton">Comprar</button>
+    endforeach;
+    ?>
+<button class="cartModalButton">Comprar</button>
 
-    <!-- PARA ONETTI (LUEGO ELIMINA EL COMENTARIO):
-    a href="index.php?log=true&controller=*compra*&action=*hacerCompra($cart-?id_producto, $cart-?unidades, $_SESSION['client'])*"> -->
-              
-              <?php
+<?php
 
-            } else {
-                ?>
-                    <p><a class="cartLink" href="index.php?log=true&controller=client&action=loginClient">Inicia sesión</a> para usar la cesta de la compra.</p>
-                    <?php
-                }
-                echo '
+} else {
+    ?>
+<p><a class="cartLink" href="index.php?log=true&controller=client&action=loginClient">Inicia sesión</a> para usar la
+    cesta de la compra.</p>
+<?php
+}
+echo '
             </div>
         </div>
     </header>';

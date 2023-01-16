@@ -1,6 +1,7 @@
 <?php
 require_once("database.php");
-class Client extends Database {
+class Client
+{
 
     private $pdo;
     private $email;
@@ -22,6 +23,7 @@ class Client extends Database {
         $this->userNumber = $number;
         $this->userDNI = $DNI;
         $this->password = $password;
+        $this->pdo = (new Database())->connect();
     }
 
 
@@ -97,8 +99,7 @@ class Client extends Database {
     public function loginAuth()
     {
         $sql = "SELECT * FROM clientes WHERE email = '{$this->getEmail()}' AND password = md5('{$this->getPassword()}')";
-        $conn = new Database();
-        $login = $conn->connect()->query($sql);
+        $login = $this->pdo->query($sql);
         if ($login && $login->rowCount() == 1) {
             return $login->fetch()['email'];
         }
@@ -108,20 +109,16 @@ class Client extends Database {
     public function userSingIn()
     {
         $sql = "INSERT INTO clientes (email, nombre, apellidos, calle, numero, dni, password) VALUES ('{$this->getEmail()}','{$this->getUserName()}','{$this->getUserLastName()}','{$this->getUserDirection()}','{$this->getUserNumber()}','{$this->getUserDNI()}',md5('{$this->getPassword()}'))";
-        $conn = new Database();
-        $db = $conn->connect();
-        if($db->query($sql)){
+        if ($this->pdo->query($sql)) {
             echo 'si';
         } else {
             echo 'no';
         }
-        
+
     }
 
     public function getFullName($email)
     {
-        $this->pdo = (new Database)->connect();
-
         try {
             $query1 = $this->pdo->prepare("SELECT nombre FROM clientes WHERE email = '{$email}';");
             $query2 = $this->pdo->prepare("SELECT apellidos FROM clientes WHERE email = '{$email}';");
@@ -137,8 +134,6 @@ class Client extends Database {
 
     public function getAllData($email)
     {
-        $this->pdo = (new Database)->connect();
-
         try {
             $query = $this->pdo->prepare("SELECT * FROM clientes WHERE email = '{$email}';");
             $query->execute();
@@ -151,20 +146,11 @@ class Client extends Database {
     public function modifyUser($id)
     {
         $sql = "UPDATE clientes (email, nombre, apellidos, calle, numero, dni";
-
-
         $sql = "UPDATE clientes SET email='{$this->getEmail()}', nombre='{$this->getUserName()}', apellidos='{$this->getUserLastName()}', calle='{$this->getUserDirection()}', numero='{$this->getUserNumber()}', dni='{$this->getUserDNI()}' WHERE id = '{$id}';";
-        $conn = new Database();
-        $db = $conn->connect();
-        if($db->query($sql)){
-            echo '<script>window.location.replace("index.php")</script>';
+        if ($this->pdo->query($sql)) {
+            echo 'si';
         } else {
             echo 'no';
         }
     }
 }
-
-
-
-
-       
