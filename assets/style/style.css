@@ -962,24 +962,19 @@ body {
     padding: 1%;
     height: 40vh;
     background-repeat: no-repeat;
-<<<<<<< HEAD
     background-size:cover;
     width: 60%;
-=======
     background-size: cover;
     width: 80%;
->>>>>>> ba075287f49e85ae5082dd53328cd486a753b121
     margin: auto;
   }
 
   .modalMoreInfo {
     display: none;
   }
-<<<<<<< HEAD
-  
   .footerSocial {
     font-size: 20px;
-  }
+}
 
   .footerListBox {
     flex-direction: column;
@@ -990,6 +985,3 @@ body {
 
 
 
-=======
-}
->>>>>>> ba075287f49e85ae5082dd53328cd486a753b121
