@@ -81,9 +81,11 @@ function anadirCarrito(id) {
   let modal = document.querySelector(".modalNoProducts");
   const buyButton = document.querySelector(".cartModalButton");
 
-  buyButton.addEventListener("click", () => {
-    window.location.href = `index.php?controller=order&action=saveOrder`;
-  })
+  if (buyButton) {
+    buyButton.addEventListener("click", () => {
+      window.location.href = `index.php?controller=order&action=saveOrder`;
+    })
+  }
 
   plusButton.addEventListener("click", () => {
     userInputNumber++;
@@ -126,10 +128,15 @@ function desplegarImagen(id) {
   const modalInfo = document.querySelector(".modalMoreInfo" + id);
   const mark = document.querySelector(".xmark" + id);
 
-  galleryImg.addEventListener("click", () => {
-    modalInfo.classList.toggle("modalMoreInfoDisplay");
-  });
-  mark.addEventListener("click", () => {
-    modalInfo.classList.toggle("modalMoreInfoDisplay");
-  });
+  if (galleryImg) {
+    galleryImg.addEventListener("click", () => {
+      modalInfo.classList.toggle("modalMoreInfoDisplay");
+    });
+  }
+
+  if (mark) {
+    mark.addEventListener("click", () => {
+      modalInfo.classList.toggle("modalMoreInfoDisplay");
+    });
+  }
 }
