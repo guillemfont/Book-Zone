@@ -50,7 +50,6 @@ class ProductController
         $product->setIdCategoria(intval($_POST['categorias']));
         $product->addProduct();
         header('Location: index.php?controller=Admin&action=menuAdmin');
-
     }
 
     public function postFormEditProduct()
@@ -85,14 +84,13 @@ class ProductController
 
     public function postConditionProduct()
     {
-
         $aux = new Product();
         $aux->setId($_GET['id']);
         $product = $aux->getProductById();
-        if ($product->estado == '0') {
-            $product->editConditionProduct($product->id, 1);
+        if ($product["estado"] == '0') {
+            $aux->editConditionProduct($_GET['id'], 1);
         } else {
-            $product->editConditionProduct($product->id, 0);
+            $aux->editConditionProduct($_GET['id'], 0);
         }
 
         header('Location: index.php?controller=Admin&action=menuAdmin');
@@ -105,5 +103,4 @@ class ProductController
         $productList = $product->searchProduct();
         require_once "views/admin/menuAdmin.php";
     }
-
 }

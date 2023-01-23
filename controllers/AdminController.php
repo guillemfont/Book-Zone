@@ -15,8 +15,9 @@ class AdminController
         require_once 'views/admin/loginAdmin.php';
     }
 
-    public function loginAuth() {
-        if(!isset($_POST['admin']) || !isset($_POST['password'])) {
+    public function loginAuth()
+    {
+        if (!isset($_POST['admin']) || !isset($_POST['password'])) {
             header('Location: index.php?log=true&controller=Admin&action=loginAdmin?');
         }
 
@@ -25,7 +26,7 @@ class AdminController
         $admin->setPassword($_POST['password']);
         $login = $admin->loginAuth();
 
-        if($login) {
+        if ($login) {
             $_SESSION['admin'] = $login;
             header('Location: index.php?controller=Admin&action=menuAdmin');
         } else {
@@ -33,69 +34,77 @@ class AdminController
         }
     }
 
-    public function menuAdmin() {
+    public function menuAdmin()
+    {
         $this->checkAdmin();
         require_once 'productController.php';
         $productController = new ProductController();
         $productController->viewTableProduct();
     }
 
-    public function addProduct() {
+    public function addProduct()
+    {
         $this->checkAdmin();
         require_once 'productController.php';
         $productController = new ProductController();
         $productController->addTableProduct();
     }
 
-    public function postAddProduct() {
+    public function postAddProduct()
+    {
         $this->checkAdmin();
         require_once 'productController.php';
         $productController = new ProductController();
         $productController->postFormAddProduct();
     }
 
-    public function editProduct() {
+    public function editProduct()
+    {
         $this->checkAdmin();
         require_once 'productController.php';
         $productController = new ProductController();
         $productController->editTableProduct();
     }
 
-    public function postSearchProduct() {
+    public function postSearchProduct()
+    {
         $this->checkAdmin();
         require_once 'productController.php';
         $productController = new ProductController();
         $productController->postFormSearchProduct();
     }
-    public function postSearchCategory() {
+    public function postSearchCategory()
+    {
         $this->checkAdmin();
         require_once 'categoryController.php';
         $productController = new categoryController();
         $productController->postFormSearchCategory();
     }
 
-    public function postEditProduct() {
+    public function postEditProduct()
+    {
         $this->checkAdmin();
         require_once 'productController.php';
         $productController = new ProductController();
         $productController->postFormEditProduct();
     }
 
-    public function conditionProduct() {
+    public function conditionProduct()
+    {
         $this->checkAdmin();
         require_once 'productController.php';
-        $productController = new ProductController();
-        $productController->postConditionProduct();
+        (new ProductController())->postConditionProduct();
     }
 
-    public function conditionCategory() {
+    public function conditionCategory()
+    {
         $this->checkAdmin();
         require_once 'categoryController.php';
-        $productController = new CategoryController();
-        $productController->postConditionCategory();
+        (new CategoryController())->postConditionCategory();
     }
 
-    public function closeAdmin() {
+    public function closeAdmin()
+    {
         unset($_SESSION['admin']);
         header('Location: index.php?controller=Admin&action=loginAdmin');
     }
@@ -116,32 +125,36 @@ class AdminController
         $productController->viewTableOrders();
     }
 
-    public function addCategory() {
+    public function addCategory()
+    {
         $this->checkAdmin();
         require_once 'productController.php';
         $categoryController = new CategoryController();
         $categoryController->addTableCategory();
     }
 
-    public function postAddCategory() {
+    public function postAddCategory()
+    {
         $this->checkAdmin();
         require_once 'productController.php';
         $categoryController = new CategoryController();
         $categoryController->postFormAddCategory();
     }
 
-    public function editCategory() {
+    public function editCategory()
+    {
         $this->checkAdmin();
         require_once 'categoryController.php';
         $categoryController = new categoryController();
         $categoryController->editTableCategory();
     }
-    public function postEditCategory() {
+    public function postEditCategory()
+    {
         $this->checkAdmin();
         require_once 'categoryController.php';
         $categoryController = new CategoryController();
         $categoryController->postFormEditCategory();
     }
-    
+
 
 }

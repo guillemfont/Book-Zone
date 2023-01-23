@@ -2,7 +2,8 @@
 
     <?php if (isset($productList)) {
         foreach ($productList as $product):
-            ?>
+            if ($product->estado == 1):
+                ?>
 
     <section class="mainMenu">
         <iframe onload="desplegarImagen(<?php echo ($product->id) ?>)" style="display: none">
@@ -18,15 +19,16 @@
             <h2 class="detailsAuthor">
                 <?php echo ($product->autor); ?>
             </h2>
-            <h2 class="detailsTitle"><?php echo ($product->nombre); ?>
+            <h2 class="detailsTitle">
+                <?php echo ($product->nombre); ?>
             </h2>
             <p class="detailsDescription">
                 <?php echo ($product->descripcion); ?>
             </p>
             <div class="detailsPrices">
                 <?php
-                        if ($product->precioAnterior != null) {
-                            ?>
+                            if ($product->precioAnterior != null) {
+                                ?>
                 <p class="detailsNewPrice">
                     <?php echo ($product->precio); ?>€
                     <span
@@ -39,14 +41,14 @@
                     </span>
                 </p>
                 <?php
-                        } else {
-                            ?>
+                            } else {
+                                ?>
                 <p class="detailsNewPrice">
                     <?php echo ($product->precio); ?>€
                 </p>
                 <?php
-                        }
-                        ?>
+                            }
+                            ?>
             </div>
             <iframe onload="anadirCarrito(<?php echo ($product->id); ?>)" style="display: none"></iframe>
             <div class="detailsQuantity">
@@ -58,16 +60,16 @@
                     <i class="fa-solid fa-plus detailsInputPlus" id="detailsInputPlus<?php echo ($product->id); ?>"></i>
                 </div>
                 <?php
-                        if (isset($_SESSION['client'])) {
-                            if ($product->stock > 0) {
-                                echo '<button class="detailsButton' . $product->id . ' detailsButton"><i class="fa-solid fa-cart-shopping"></i> Añadir a la cesta</button>';
+                            if (isset($_SESSION['client'])) {
+                                if ($product->stock > 0) {
+                                    echo '<button class="detailsButton' . $product->id . ' detailsButton"><i class="fa-solid fa-cart-shopping"></i> Añadir a la cesta</button>';
+                                } else {
+                                    echo '<button class="detailsButtonDisabled">No hay unidades</button>';
+                                }
                             } else {
-                                echo '<button class="detailsButtonDisabled">No hay unidades</button>';
+                                echo '<button class="detailsButtonDisabled"><a class="cartLink" href="index.php?log=true&controller=client&action=loginClient">Inicia sesión</a> para comprar</button>';
                             }
-                        } else {
-                            echo '<button class="detailsButtonDisabled"><a class="cartLink" href="index.php?log=true&controller=client&action=loginClient">Inicia sesión</a> para comprar</button>';
-                        }
-                        ?>
+                            ?>
             </div>
         </article>
     </section>
@@ -87,7 +89,9 @@
             <h2 class="detailsAuthor">
                 <?php echo ($product->autor); ?>
             </h2>
-            <h2 class="detailsTitle"><?php echo ($product->nombre); ?></h2>
+            <h2 class="detailsTitle">
+                <?php echo ($product->nombre); ?>
+            </h2>
             <article class="gallery">
                 <div class="galleryImageContainerMoreInfo"
                     style='background-image:url(data:image/jpg;base64,<?php echo base64_encode($product->foto); ?>);'>
@@ -96,33 +100,32 @@
             <article class="details">
                 <h2 class="detailsAuthor">
                     <?php
-                            $db = new Database;
-                            $query = $db->db->prepare("SELECT nombre FROM categoria WHERE id_categoria LIKE '$product->id_categoria';");
-                            $query->execute();
-                            print($query->fetchAll(PDO::FETCH_OBJ)[0]->nombre);
-                            ?>
+                                $db = new Database;
+                                $query = $db->db->prepare("SELECT nombre FROM categoria WHERE id_categoria LIKE '$product->id_categoria';");
+                                $query->execute();
+                                print($query->fetchAll(PDO::FETCH_OBJ)[0]->nombre);
+                                ?>
 
 
                 </h2>
-                <p class="detailsDescriptionInfo"><?php echo ($product->descripcion); ?></p>
+                <p class="detailsDescriptionInfo">
+                    <?php echo ($product->descripcion); ?>
+                </p>
                 <?php
-                        if ($product->stock > 10) {
-                            echo '<p class="classStock">En stock.</p>';
-                        } else if ($product->stock < 5 && $product->stock > 0) {
-                            echo '<p class="classStock">Últimas unidades.</p>';
-                        } else {
-                            echo '<p class="classStock">No disponible.</p>';
-                        }
+                            if ($product->stock > 10) {
+                                echo '<p class="classStock">En stock.</p>';
+                            } else if ($product->stock < 5 && $product->stock > 0) {
+                                echo '<p class="classStock">Últimas unidades.</p>';
+                            } else {
+                                echo '<p class="classStock">No disponible.</p>';
+                            }
 
-                        ?>
+                            ?>
             </article>
         </div>
 
     </div>
-
-
-
-
+    <?php endif; ?>
     <?php endforeach;
     } ?>
 </section>

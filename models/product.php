@@ -100,6 +100,17 @@ class Product
         $this->id_categoria = $id_categoria;
     }
 
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    public function setEstado($estado): void
+    {
+        $this->estado = $estado;
+    }
+
+
     public function getProductList()
     {
         try {

@@ -43,9 +43,9 @@ class CategoryController
         $aux->setIdCategoria($_GET['id_categoria']);
         $category = $aux->getCategoryById();
         if ($category["estado"] == '0') {
-            $category->editConditionCategory($category["id_categoria"], 1);
+            $aux->editConditionCategory($_GET["id_categoria"], 1);
         } else {
-            $category->editConditionCategory($category["id_categoria"], 0);
+            $aux->editConditionCategory($_GET["id_categoria"], 0);
         }
 
         header('Location: index.php?controller=Admin&action=viewTableCategory');
@@ -78,7 +78,8 @@ class CategoryController
         require_once "views/admin/tableCategory.php";
     }
 
-    public function getAllCategories(){
+    public function getAllCategories()
+    {
         $categoryList = (new Category())->getFullCategories();
         return $categoryList;
     }

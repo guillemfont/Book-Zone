@@ -30,6 +30,6 @@ class OrderController
         $productos = trim($productos, ',');
         $cantidades = trim($cantidades, ',');
         (new Order())->addOrder($productos, $client, $cantidades, $precioTotal);
-        header('Location: index.php');
+        echo '<script>window.location.replace("index.php")</script>';
     }
 }
