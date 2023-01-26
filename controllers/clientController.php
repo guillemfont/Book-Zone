@@ -39,6 +39,7 @@ class ClientController
         $this->checkClient();
         $client = new Client();
         $clientName = $client->getFullName($_SESSION['client']);
+        $datos =  $client->getHistorico($_SESSION['client']);
         require_once 'views/client/menuClient.php';
     }
 

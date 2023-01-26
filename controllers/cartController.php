@@ -31,7 +31,8 @@ class CartController
             $cart = new Cart($client, $product, 0);
 
             $cart->deleteCart();
-            // echo $product;
+            header('Location: index.php');
+
         } else {
             header('Location: index.php');
         }

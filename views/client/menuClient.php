@@ -7,22 +7,28 @@ echo '
     <table class="clientTable">
         <tr>
             <th>Pedido</th>
-            <th>Enviado</th>
-            <th>Estado</th>
+            <th>Unidades</th>
+            <th>Precio total</th>
         </tr>';
 if ("1" == 1) {
+    
+    // echo $datos->id_productos;
 
-    echo '<tr>
-    <td>"Pedido"</td>
-    <td>"Enviado"</td>
-    <td>"Estado"</td>
-    </tr>';
+    foreach($datos as $dato):
 
+        echo '<tr>';
+        echo'<td>'.( $dato->id_productos).'</td>';
+        echo'<td>'.( $dato->ListaUnidades).'</td>';
+        echo'<td>'.( $dato->precio_total).'</td>';
+        echo '</tr>';
+
+
+    endforeach;
 
 
 } else {
     ?>
-
+    echo 'No hay pedidos';
 
 <?php
 

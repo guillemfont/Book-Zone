@@ -149,4 +149,15 @@ class Client
         $sql = "UPDATE clientes SET email='{$this->getEmail()}', nombre='{$this->getUserName()}', apellidos='{$this->getUserLastName()}', calle='{$this->getUserDirection()}', numero='{$this->getUserNumber()}', dni='{$this->getUserDNI()}' WHERE id = '{$id}';";
         $this->pdo->query($sql);
     }
+
+    public function getHistorico($email)
+    {
+        try {
+            $query1 = $this->pdo->prepare("SELECT * FROM linea_pedido WHERE email_cliente = '{$email}';");
+            $query1->execute();
+            return $query1->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
 }
