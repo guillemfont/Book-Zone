@@ -11,4 +11,4 @@ Guillem Font y Albert Onetti.
 
 -   Mejorar diseño del carrito (PHP -> views/general/header.php & JS -> assets/style/style.css).
 -   Mejorar diseño responsive (JS -> assets/style/style.css). - Añadir ofertas especiales y clasificar por categorías (PHP -> views/general/menu.php).
--   Añadir productos y separar por categorías.
+-   Separar productos por categorías.
