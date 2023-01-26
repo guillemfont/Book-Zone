@@ -19,7 +19,7 @@ echo '<header class="menu">
                 
                 echo '
                 <li class="menuInside">
-                <a href="#" class="menuLinkInside">'.$ca->nombre.'</a>
+                <button onclick="catScroll()" class="menuLinkInside">'.$ca->nombre.'</button>
                 </li>';
             endforeach;
             echo '

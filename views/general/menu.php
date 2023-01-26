@@ -1,9 +1,24 @@
+<?php
+require_once "controllers/categoryController.php";
+$cat = new CategoryController;
+$categories = $cat->getAllCategories();
+echo '<div class="espace"></div>';
+foreach ($categories as $ca):
+
+    echo '<h1 class="catName">'.$ca->nombre.'</h1>';
+
+?>
+
+
 <section class="container">
 
     <?php if (isset($productList)) {
+        
+
+
         foreach ($productList as $product):
-            if ($product->estado == 1):
-                ?>
+            if ($product->estado == 1 && $product->id_categoria == $ca->id_categoria):                
+               ?>
 
     <section class="mainMenu">
         <iframe onload="desplegarImagen(<?php echo ($product->id) ?>)" style="display: none">
@@ -127,5 +142,9 @@
     </div>
     <?php endif; ?>
     <?php endforeach;
+       
     } ?>
 </section>
+<?php
+ endforeach;
+?>

@@ -140,3 +140,7 @@ function desplegarImagen(id) {
     });
   }
 }
+
+function catScroll(){
+  console.log('hola');
+}

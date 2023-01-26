@@ -123,7 +123,7 @@ class Category
     public function getFullCategories()
     {
         try {
-            $query = $this->pdo->prepare("SELECT nombre FROM `categoria`;");
+            $query = $this->pdo->prepare("SELECT nombre, id_categoria FROM `categoria`;");
             $query->execute();
             return $query->fetchAll(PDO::FETCH_OBJ);
         } catch (Exception $e) {
