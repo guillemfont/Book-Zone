@@ -12,5 +12,10 @@ Guillem Font y Albert Onetti.
 - Menú categorias
 - Mejorar historico pedido
 - Pantalla de compra
-- Añadir botón eliminar
+- Añadir botón eliminar (ADMIN)
 - NO mostrar categorias desactivadas.
+- Añadir ofertas
+- Modificar modales.
+
+
+(EXTRA) Añadir libros para mejor simetría.
