@@ -9,6 +9,8 @@ Guillem Font y Albert Onetti.
 # TODO:
 
 
--   Mejorar diseño del carrito (PHP -> views/general/header.php & JS -> assets/style/style.css).
--   Mejorar diseño responsive (JS -> assets/style/style.css). - Añadir ofertas especiales y clasificar por categorías (PHP -> views/general/menu.php).
--   Separar productos por categorías.
+- Menú categorias
+- Mejorar historico pedido
+- Pantalla de compra
+- Añadir botón eliminar
+- NO mostrar categorias desactivadas.

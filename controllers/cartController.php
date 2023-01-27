@@ -31,10 +31,12 @@ class CartController
             $cart = new Cart($client, $product, 0);
 
             $cart->deleteCart();
-            header('Location: index.php');
+            echo '<script>window.location.replace("index.php")</script>';
+            
 
         } else {
-            header('Location: index.php');
+            echo '<script>window.location.replace("index.php")</script>';
+            
         }
     }
 
