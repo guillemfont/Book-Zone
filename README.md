@@ -8,7 +8,6 @@ Guillem Font y Albert Onetti.
 
 # TODO:
 
--   Menú categorias
 -   Mejorar historico pedido
 -   Pantalla de compra
 -   Añadir botón eliminar (ADMIN)
