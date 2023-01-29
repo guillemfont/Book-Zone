@@ -19,7 +19,7 @@ foreach ($categories as $ca):
 
     echo '
                 <li class="menuInside">
-                <button onclick="catScroll()" class="menuLinkInside">' . $ca->nombre . '</button>
+                <button onclick="catScroll('.$ca->id_categoria.')" class="menuLinkInside">' . $ca->nombre . '</button>
                 </li>';
 endforeach;
 echo '

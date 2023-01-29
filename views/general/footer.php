@@ -1,6 +1,7 @@
 <?php
 echo '
 <footer class="footerBox">
+    <div class="arrowUp"><button onclick="catScroll(0)" class="arrowButton"><i class="fa-solid fa-arrow-up"></i> <p>Volver arriba</p></button></div>
     <section class="footerSocial">
         <p>¡Síguenos en las redes!</p>
         <div class="socialBox">

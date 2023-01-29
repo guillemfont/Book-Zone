@@ -7,7 +7,7 @@ foreach ($categories as $ca):
     if ($ca->estado == 1):
         echo '<h1 class="catName">' . $ca->nombre . '</h1>';
         ?>
-        <section class="container">
+        <section class="container" id="<?php echo $ca->id_categoria;?>">
             <?php if (isset($productList)) {
                 foreach ($productList as $product):
                     if ($product->estado == 1 && $product->id_categoria == $ca->id_categoria):

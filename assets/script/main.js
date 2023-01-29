@@ -141,6 +141,43 @@ function desplegarImagen(id) {
   }
 }
 
-function catScroll(){
-  console.log('hola');
+function catScroll(id){
+  console.log(id);
+  
+  switch(id){
+
+    case 0:
+      window.scroll(0, 0);
+    break;
+    case 1:
+      window.scrollBy({
+        top: 100,
+        behavior: 'smooth'
+      });
+    break;
+    case 2:
+      window.scrollBy({
+        top: 1700,
+        behavior: 'smooth'
+      });
+    break;
+    case 3:
+      window.scrollBy({
+        top: 3300,
+        behavior: 'smooth'
+      });
+    break;
+    case 4:
+      window.scrollBy({
+        top: 4900,
+        behavior: 'smooth'
+      });
+    break;
+
+
+  }
+  
+  
+  
+  
 }

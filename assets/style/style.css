@@ -706,6 +706,28 @@ body {
   width: 100%;
 }
 
+.arrowUp {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
+}
+
+.arrowButton {
+  background-color: #6b6dd6;
+  bottom: unset;
+  border: none;
+  width: 30%;
+  height: 50px;
+  color: white;
+  border-radius: 20px;
+}
+
+.arrowButton:hover {
+  cursor: pointer;
+  padding-bottom: 3px;
+}
+
 .footerSocial {
   width: 100%;
   font-size: 1.7em;
