@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 echo '
 <div class=formBox>
@@ -27,8 +27,8 @@ echo '
 
 
 
-if ($_GET && isset($_GET['log']) && $_GET['log'] == 'false'){
-    
+if ($_GET && isset($_GET['log']) && $_GET['log'] == 'false') {
+
     echo "<script>invalidSession()</script>";
 }
 ?>
