@@ -8,14 +8,10 @@ Guillem Font y Albert Onetti.
 
 # TODO:
 
-
-- Menú categorias
-- Mejorar historico pedido
-- Pantalla de compra
-- Añadir botón eliminar (ADMIN)
-- NO mostrar categorias desactivadas.
-- Añadir ofertas
-- Modificar modales.
-
-
-(EXTRA) Añadir libros para mejor simetría.
+-   Menú categorias
+-   Mejorar historico pedido
+-   Pantalla de compra
+-   Añadir botón eliminar (ADMIN)
+-   NO mostrar categorias desactivadas.
+-   Añadir ofertas
+-   Modificar modales.
