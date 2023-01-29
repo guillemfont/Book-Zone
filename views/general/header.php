@@ -9,7 +9,7 @@ echo '<header class="menu">
                 <a href="index.php" class="menuLink"><i class="fa-solid fa-house"></i></a>
             </li>
             <li class="menuItem menuItemShow">
-            <a href="#" class="menuLink"><p>Categorías</p><i class="fa-solid fa-angle-up" id="menuArrow"></i></a>
+            <button class="menuLinkCat"><p>Categorías</p><i class="fa-solid fa-angle-up" id="menuArrow"></i></button>
             <ul class="menuNesting">
             <li class="menuItem">';
             require_once "controllers/categoryController.php";

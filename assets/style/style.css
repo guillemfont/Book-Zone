@@ -161,6 +161,21 @@ body {
   background-color: #1A202C;
 }
 
+
+.menuLinkCat {
+  all: unset;
+  color: #fff;
+  text-decoration: none;
+  padding: 0 auto;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  width: 15vh;
+  justify-content: center;
+  border: none;
+  background-color: #1A202C;
+}
+
 .menuLink:hover {
   background-color: #5e7094;
   cursor: pointer;
