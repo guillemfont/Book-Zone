@@ -78,4 +78,4 @@ echo '
         <p><i class="fa-regular fa-copyright"></i> 2022 Todos los derechos estan reservados para Book Zone</p>
     </section>
 </footer>';
-        ?>
+?>

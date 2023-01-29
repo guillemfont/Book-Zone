@@ -1,7 +1,6 @@
 <?php
 require_once "models/product.php";
 require_once 'models/category.php';
-
 class ProductController
 {
     public function viewTableProduct()
@@ -9,30 +8,32 @@ class ProductController
         $productList = (new Product())->getProductList();
         require_once "views/admin/menuAdmin.php";
     }
-
     public function addTableProduct()
     {
         require_once "models/product.php";
         $categoryList = (new Category())->getCategoryList();
         require_once "views/admin/addProduct.php";
     }
-
+    public function deleteTableProduct()
+    {
+        $aux = new Product();
+        $aux->setId($_GET['id']);
+        $aux->deleteProduct();
+        header('Location: index.php?controller=Admin&action=menuAdmin');
+    }
     public function editTableProduct()
     {
         if (!isset($_GET['id'])) {
             echo "<script>alert('No se ha pasado la ID correctamente');</script>";
             header('Location: index.php?controller=Admin&action=menuAdmin');
         }
-
         $aux = new Product();
         $aux->setId($_GET['id']);
         $product = $aux->getProductById();
-
         require_once 'models/category.php';
         $categoryList = (new Category())->getCategoryList();
         require_once "views/admin/editProduct.php";
     }
-
     public function postFormAddProduct()
     {
         $product = new Product();
@@ -51,7 +52,6 @@ class ProductController
         $product->addProduct();
         header('Location: index.php?controller=Admin&action=menuAdmin');
     }
-
     public function postFormEditProduct()
     {
         $product = new Product();
@@ -76,12 +76,10 @@ class ProductController
         }
         header('Location: index.php?controller=Admin&action=menuAdmin');
     }
-
     public function isCondition(): bool
     {
         return (!isset($_POST['nombre']) || !isset($_POST['descripcion']) || !isset($_POST['precio']) || !isset($_POST['stock']) || !isset($_POST['id_categoria']));
     }
-
     public function postConditionProduct()
     {
         $aux = new Product();
@@ -92,10 +90,8 @@ class ProductController
         } else {
             $aux->editConditionProduct($_GET['id'], 0);
         }
-
         header('Location: index.php?controller=Admin&action=menuAdmin');
     }
-
     public function postFormSearchProduct()
     {
         $product = new Product();

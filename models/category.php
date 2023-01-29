@@ -123,7 +123,7 @@ class Category
     public function getFullCategories()
     {
         try {
-            $query = $this->pdo->prepare("SELECT nombre, id_categoria FROM `categoria`;");
+            $query = $this->pdo->prepare("SELECT nombre,estado, id_categoria FROM `categoria`;");
             $query->execute();
             return $query->fetchAll(PDO::FETCH_OBJ);
         } catch (Exception $e) {
@@ -132,4 +132,13 @@ class Category
     }
 
 
+    public function deleteCategory()
+    {
+        try {
+            $consulta = "DELETE FROM categoria WHERE id_categoria={$this->id_categoria}";
+            $this->pdo->query($consulta);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
 }

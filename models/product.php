@@ -186,4 +186,13 @@ class Product
             die($e->getMessage());
         }
     }
+    public function deleteProduct()
+    {
+        try {
+            $consulta = "DELETE FROM productos WHERE id={$this->id}";
+            $resultado = $this->pdo->query($consulta);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
 }

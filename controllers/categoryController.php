@@ -1,20 +1,23 @@
 <?php
-
 require_once 'models/category.php';
 class CategoryController
 {
     public function viewTableCategory()
     {
         $categoryList = (new Category())->getCategoryList();
-
         require_once('views/admin/tableCategory.php');
     }
-
+    public function deleteTableCategory()
+    {
+        $category = new Category();
+        $category->setIdCategoria($_GET['id']);
+        $category->deleteCategory();
+        header('Location: index.php?controller=Admin&action=viewTableCategory');
+    }
     public function addTableCategory()
     {
         require_once 'views/admin/addCategory.php';
     }
-
     public function postFormAddCategory()
     {
         $category = new Category();
@@ -22,7 +25,6 @@ class CategoryController
         $category->addCategory();
         header('Location: index.php?controller=Admin&action=viewTableCategory');
     }
-
     public function editTableCategory()
     {
         if (!isset($_GET['id_categoria'])) {
@@ -36,7 +38,6 @@ class CategoryController
         $category = $aux->getCategoryById();
         require_once "views/admin/editCategory.php";
     }
-
     public function postConditionCategory()
     {
         $aux = new Category();
@@ -47,10 +48,8 @@ class CategoryController
         } else {
             $aux->editConditionCategory($_GET["id_categoria"], 0);
         }
-
         header('Location: index.php?controller=Admin&action=viewTableCategory');
     }
-
     public function postFormEditCategory()
     {
         $condition = $this->isCondition();
@@ -68,8 +67,6 @@ class CategoryController
     {
         return (!isset($_POST['nombre']) || !isset($_POST['id_categoria']));
     }
-
-
     public function postFormSearchCategory()
     {
         $category = new Category();
@@ -77,7 +74,6 @@ class CategoryController
         $categoryList = $category->searchCategory();
         require_once "views/admin/tableCategory.php";
     }
-
     public function getAllCategories()
     {
         $categoryList = (new Category())->getFullCategories();

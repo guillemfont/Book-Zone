@@ -12,17 +12,17 @@ echo '<header class="menu">
             <a href="#" class="menuLink"><p>Categorías</p><i class="fa-solid fa-angle-up" id="menuArrow"></i></a>
             <ul class="menuNesting">
             <li class="menuItem">';
-            require_once "controllers/categoryController.php";
-            $cat = new CategoryController;
-            $categories = $cat->getAllCategories();
-            foreach ($categories as $ca):
-                
-                echo '
+require_once "controllers/categoryController.php";
+$cat = new CategoryController;
+$categories = $cat->getAllCategories();
+foreach ($categories as $ca):
+
+    echo '
                 <li class="menuInside">
-                <button onclick="catScroll()" class="menuLinkInside">'.$ca->nombre.'</button>
+                <button onclick="catScroll()" class="menuLinkInside">' . $ca->nombre . '</button>
                 </li>';
-            endforeach;
-            echo '
+endforeach;
+echo '
             </ul>
             </li>
                     <a href="index.php" class="menuLink">Ofertas</a>
@@ -93,15 +93,16 @@ if (isset($_SESSION['client'])) {
                     </div>';
     endforeach;
     ?>
-<button class="cartModalButton">Comprar</button>
+    <button class="cartModalButton">Comprar</button>
 
-<?php
+    <?php
 
 } else {
     ?>
-<p><a class="cartLink" href="index.php?log=true&controller=client&action=loginClient">Inicia sesión</a> para usar la
-    cesta de la compra.</p>
-<?php
+    <p><a class="cartLink"
+           href="index.php?log=true&controller=client&action=loginClient">Inicia sesión</a> para usar la
+        cesta de la compra.</p>
+    <?php
 }
 echo '
             </div>
