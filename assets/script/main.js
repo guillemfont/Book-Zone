@@ -104,6 +104,7 @@ function anadirCarrito(id) {
       if (userInput.value > 0) {
         window.location.href = `index.php?product=${id}&number=${userInput.value}&controller=Cart&action=addToCart`;
       } else {
+        window.scroll(0, 0);
         modal.classList.toggle("modalNoProductDisplay");
       }
 
@@ -130,6 +131,7 @@ function desplegarImagen(id) {
 
   if (galleryImg) {
     galleryImg.addEventListener("click", () => {
+      window.scroll(0, 0);
       modalInfo.classList.toggle("modalMoreInfoDisplay");
     });
   }

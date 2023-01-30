@@ -122,6 +122,17 @@ class Product
         }
     }
 
+    public function getOffersList()
+    {
+        try {
+            $query = $this->pdo->prepare("SELECT * FROM productos WHERE precioAnterior != 'NULL';");
+            $query->execute();
+            return $query->fetchAll(PDO::FETCH_OBJ);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     public function addProduct()
     {
         try {

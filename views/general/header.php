@@ -25,7 +25,7 @@ endforeach;
 echo '
             </ul>
             </li>
-                    <a href="index.php" class="menuLink">Ofertas</a>
+                    <a href="index.php?controller=client&action=showOffers" class="menuLink">Ofertas</a>
                 </li>
                 <li class="menuItem">
                 <button class="menuLink" id="cartShopContainer"><i class="fa-solid fa-cart-shopping" id="cartShopButton"></i></button>

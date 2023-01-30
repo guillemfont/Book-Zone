@@ -39,7 +39,8 @@ class ClientController
     public function closeClient()
     {
         unset($_SESSION['client']);
-        header('Location:index.php');
+        echo '<script>window.location.replace("index.php")</script>';
+
     }
     public function registerClient()
     {
@@ -98,5 +99,13 @@ class ClientController
         } else {
             header('Location: index.php?log=true&controller=client&action=loginClient');
         }
+    }
+
+    public function showOffers() {
+        require_once "models/product.php";
+        require_once 'productController.php';
+        $productController = new ProductController();
+        $productList = (new Product())->getOffersList();
+        require_once "views/general/offers.php";
     }
 }
