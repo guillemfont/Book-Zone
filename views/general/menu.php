@@ -133,5 +133,6 @@ foreach ($categories as $ca):
                 <?php endforeach;
             } ?>
         </section>
-    <?php endif; ?>
-<?php endforeach; ?>
+        <?php endif; ?>
+        <?php endforeach; ?>
+        <div class="arrowUp"><button onclick="catScroll(0)" class="arrowButton"><i class="fa-solid fa-arrow-up"></i> <p>Volver arriba</p></button></div>

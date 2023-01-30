@@ -431,7 +431,33 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-.formSumbit:hover {
+.formNo {
+  all: unset;
+  background-color: #f25438;
+  color: #fff;
+  font-weight: 300;
+  font-size: 1rem;
+  padding: 0.8em;
+  border: none;
+  border-radius: 0.5em;
+  font-family: "Roboto", sans-serif;
+}
+
+.formSumbitNo {
+  background: none;
+  border: 0;
+  color: inherit;
+  /* cursor: default; */
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0;
+  width: 100%;
+  text-align: center;
+
+}
+
+.formSumbit:hover, .formSumbitNo:hover, .formNo:hover {
   cursor: pointer;
   opacity: 0.8;
 }

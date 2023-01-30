@@ -9,8 +9,6 @@ Guillem Font y Albert Onetti.
 # TODO:
 
 -   Mejorar historico pedido
--   Pantalla de compra
--   Añadir botón eliminar (ADMIN)
 -   NO mostrar categorias desactivadas.
 -   Añadir ofertas
 -   Modificar modales.

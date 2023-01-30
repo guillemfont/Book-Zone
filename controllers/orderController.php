@@ -27,6 +27,12 @@ class OrderController
         $productos = trim($productos, ',');
         $cantidades = trim($cantidades, ',');
         (new Order())->addOrder($productos, $client, $cantidades, $precioTotal);
-        echo '<script>window.location.replace("index.php")</script>';
+        echo '<p>¡Gracias por tu compra!</p>';
+        echo '<p>Estás siendo redirigido...</p>';
+        header("refresh:2.5;url=index.php");
+    }
+
+    public function preSaveOrder(){
+        require_once "views/client/orderClient.php";
     }
 }

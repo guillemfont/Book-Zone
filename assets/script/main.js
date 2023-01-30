@@ -83,7 +83,7 @@ function anadirCarrito(id) {
 
   if (buyButton) {
     buyButton.addEventListener("click", () => {
-      window.location.href = `index.php?controller=order&action=saveOrder`;
+      window.location.href = `index.php?controller=order&action=preSaveOrder`;
     })
   }
 
